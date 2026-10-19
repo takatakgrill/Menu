@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taka Tak Grill - Halal Pick-up Menu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            DEFAULT: '#b91c1c', // Deep Red
+                            dark: '#991b1b',
+                            light: '#ef4444',
+                            accent: '#f59e0b' // Amber/Gold
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased min-h-screen flex flex-col">
+
+    <!-- Top Banner & Header -->
+    <header class="bg-gradient-to-r from-gray-900 via-brand-dark to-gray-900 text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="bg-brand-accent text-gray-900 p-3 rounded-xl shadow-md text-2xl font-black">
+                    <i class="fa-solid fa-fire-flame-curved"></i>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-extrabold tracking-wider uppercase">Taka Tak Grill</h1>
+                    <p class="text-xs text-gray-300 font-medium">Premium Taste & Quality • Halal Pick-Up Menu</p>
+                </div>
+            </div>
+
+            <!-- Contact & Delivery Options -->
+            <div class="flex flex-wrap items-center gap-3">
+                <a href="tel:+85251612730" class="bg-white/10 hover:bg-white/20 px-3 py-2 rounded-lg text-xs font-semibold flex items-center space-x-2 transition">
+                    <i class="fa-solid fa-phone text-brand-accent"></i>
+                    <span>+852 5161 2730</span>
+                </a>
+                <a href="tel:+85254407867" class="bg-white/10 hover:bg-white/20 px-3 py-2 rounded-lg text-xs font-semibold flex items-center space-x-2 transition">
+                    <i class="fa-solid fa-phone text-brand-accent"></i>
+                    <span>+852 5440 7867</span>
+                </a>
+                <div class="flex items-center gap-2 bg-black/30 px-3 py-1.5 rounded-lg border border-white/10 text-xs">
+                    <span class="text-gray-300">Also order on:</span>
+                    <span class="bg-yellow-400 text-black font-bold px-2 py-0.5 rounded text-[10px]">KeeTa</span>
+                    <span class="bg-pink-600 text-white font-bold px-2 py-0.5 rounded text-[10px]">Foodpanda</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Student Discount Banner -->
+    <div class="bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 text-white py-3 px-4 shadow-md">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
+            <div class="flex items-center space-x-2">
+                <i class="fa-solid fa-graduation-cap text-2xl"></i>
+                <span class="font-bold text-sm sm:text-base">Special Student Discount Available!</span>
+            </div>
+            <a href="https://wa.me/85251612730?text=Hi,%20I%20would%20like%20to%20know%20more%20about%20the%20Student%20Discount!" target="_blank" class="bg-white text-orange-700 hover:bg-gray-100 px-4 py-1.5 rounded-full text-xs font-bold shadow transition flex items-center space-x-1.5">
+                <i class="fa-brands fa-whatsapp text-green-600"></i>
+                <span>Contact via WhatsApp for Details</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Layout -->
+    <main class="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8 flex-grow w-full grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <!-- Menu Section (2 Columns) -->
+        <div class="lg:col-span-2 space-y-6">
+            
+            <!-- Search & Filter Bar -->
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col sm:flex-row gap-3 items-center justify-between">
+                <div class="relative w-full sm:w-72">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
+                        <i class="fa-solid fa-search"></i>
+                    </span>
+                    <input type="text" id="searchInput" placeholder="Search menu items..." onkeyup="filterMenu()" class="w-full pl-10 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand">
+                </div>
+                <!-- Category Tabs Scroll -->
+                <div class="flex overflow-x-auto w-full sm:w-auto gap-2 pb-1 sm:pb-0 scrollbar-none text-xs font-semibold">
+                    <button onclick="filterCategory('all')" class="cat-btn active px-3 py-1.5 rounded-lg bg-brand text-white whitespace-nowrap transition">All Items</button>
+                    <button onclick="filterCategory('chicken')" class="cat-btn px-3 py-1.5 rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200 whitespace-nowrap transition">Chicken</button>
+                    <button onclick="filterCategory('burgers')" class="cat-btn px-3 py-1.5 rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200 whitespace-nowrap transition">Burgers</button>
+                    <button onclick="filterCategory('pizza')" class="cat-btn px-3 py-1.5 rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200 whitespace-nowrap transition">Pizzas</button>
+                    <button onclick="filterCategory('grill')" class="cat-btn px-3 py-1.5 rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200 whitespace-nowrap transition">Grill & Rolls</button>
+                    <button onclick="filterCategory('dessert')" class="cat-btn px-3 py-1.5 rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200 whitespace-nowrap transition">Sweets & Drinks</button>
+                </div>
+            </div>
+
+            <!-- Categories Container -->
+            <div id="menuContainer" class="space-y-8">
+                
+                <!-- FRIED CHICKEN & WINGS -->
+                <div class="menu-category" data-category="chicken">
+                    <h3 class="text-lg font-bold text-gray-900 border-b-2 border-brand pb-2 mb-4 flex items-center justify-between">
+                        <span><i class="fa-solid fa-drumstick-bite text-brand mr-2"></i> Fried Chicken & Wings</span>
+                        <span class="text-xs text-gray-400 font-normal">Includes drink and chips where specified</span>
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <!-- Item -->
+                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
+                            <div class="flex gap-3 mb-2">
+                                <img src="https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?auto=format&fit=crop&w=150&q=80" alt="Fried Chicken" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
+                                <div>
+                                    <h4 class="font-bold text-sm text-gray-900 item-name">2 Pc Fried Chicken Meal</h4>
+                                    <p class="text-xs text-gray-500">Includes drink and chips</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
+                                <span class="font-extrabold text-brand text-base">50 HKD</span>
+                                <button onclick="addToCart('2 Pc Fried Chicken Meal', 50)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1">
+                                    <i class="fa-solid fa-plus"></i><span>Add</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
+                            <div class="flex gap-3 mb-2">
+                                <img src="https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=150&q=80" alt="Wings" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
+                                <div>
+                                    <h4 class="font-bold text-sm text-gray-900 item-name">H&S Wings (6 pcs)</h4>
+                                    <p class="text-xs text-gray-500">Includes drink and chips</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
+                                <span class="font-extrabold text-brand text-base">49 HKD</span>
+                                <button onclick="addToCart('H&S Wings (6 pcs)', 49)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1">
+                                    <i class="fa-solid fa-plus"></i><span>Add</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
+                            <div class="flex gap-3 mb-2">
+                                <img src="https://images.unsplash.com/photo-1608039829572-78524f79c4c7?auto=format&fit=crop&w=150&q=80" alt="Buffalo Wings" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
+                                <div>
+                                    <h4 class="font-bold text-sm text-gray-900 item-name">Buffalo Wings (6 pcs)</h4>
+                                    <p class="text-xs text-gray-500">Includes drink and chips</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
+                                <span class="font-extrabold text-brand text-base">49 HKD</span>
+                                <button onclick="addToCart('Buffalo Wings (6 pcs)', 49)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1">
+                                    <i class="fa-solid fa-plus"></i><span>Add</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
+                            <div class="flex gap-3 mb-2">
+                                <img src="https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=150&q=80" alt="Crispy Wings" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
+                                <div>
+                                    <h4 class="font-bold text-sm text-gray-900 item-name">Crispy Wings (6 pcs)</h4>
+                                    <p class="text-xs text-gray-500">Includes drink and chips</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
+                                <span class="font-extrabold text-brand text-base">49 HKD</span>
+                                <button onclick="addToCart('Crispy Wings (6 pcs)', 49)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1">
+                                    <i class="fa-solid fa-plus"></i><span>Add</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CHICKEN & BEEF BURGERS -->
+                <div class="menu-category" data-category="burgers">
+                    <h3 class="text-lg font-bold text-gray-900 border-b-2 border-brand pb-2 mb-4 flex items-center justify-between">
+                        <span><i class="fa-solid fa-burger text-brand mr-2"></i> Burgers & Meals</span>
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
+                            <div class="flex gap-3 mb-2">
+                                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=150&q=80" alt="Zinger Burger" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
+                                <div>
+                                    <h4 class="font-bold text-sm text-gray-900 item-name">Zinger Burger Meal</h4>
+                                    <p class="text-xs text-gray-500">Includes drink and chips</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
+                                <span class="font-extrabold text-brand text-base">45 HKD</span>
+                                <button onclick="addToCart('Zinger Burger Meal', 45)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1">
+                                    <i class="fa-solid fa-plus"></i><span>Add</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
+                            <div class="flex gap-3 mb-2">
+                                <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=150&q=80" alt="Mac Zinger" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
+                                <div>
+                                    <h4 class="font-bold text-sm text-gray-900 item-name">Mac Zinger Burger Meal</h4>
+                                    <p class="text-xs text-gray-500">Includes drink and chips</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
+                                <span class="font-extrabold text-brand text-base">65 HKD</span>
+                                <button onclick="addToCart('Mac Zinger Burger Meal', 65)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1">
+                                    <i class="fa-solid fa-plus"></i><span>Add</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
+                            <div class="flex gap-3 mb-2">
+                                <img src="https://images.unsplash.com/photo-1625813506062-0aeb1d7a094b?auto=format&fit=crop&w=150&q=80" alt="Crispy Chicken Burger" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
+                                <div>
+                                    <h4 class="font-bold text-sm text-gray-900 item-name">Crispy Chicken Burger Meal</h4>
+                                    <p class="text-xs text-gray-500">Includes drink and chips</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
+                                <span class="font-extrabold text-brand text-base">45 HKD</span>
+                                <button onclick="addToCart('Crispy Chicken Burger Meal', 45)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1">
+                                    <i class="fa-solid fa-plus"></i><span>Add</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
+                            <div class="flex gap-3 mb-2">
+                                <img src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=150&q=80" alt="Special Burger" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
+                                <div>
+                                    <h4 class="font-bold text-sm text-gray-900 item-name">Taka Tak Special Burger Meal</h4>
+                                    <p class="text-xs text-gray-500">Includes drink and chips</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
+                                <span class="font-extrabold text-brand text-base">60 HKD</span>
+                                <button onclick="addToCart('Taka Tak Special Burger Meal', 60)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1">
+                                    <i class="fa-solid fa-plus"></i><span>Add</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
+                            <div class="flex gap-3 mb-2">
+                                <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?auto=format&fit=crop&w=150&q=80" alt="Chapli Burger" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
+                                <div>
+                                    <h4 class="font-bold text-sm text-gray-900 item-name">Double Chapli Burger Meal</h4>
+                                    <p class="text-xs text-gray-500">Includes drink and chips</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
+                                <span class="font-extrabold text-brand text-base">60 HKD</span>
+                                <button onclick="addToCart('Double Chapli Burger Meal', 60)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1">
+                                    <i class="fa-solid fa-plus"></i><span>Add</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
+                            <div class="flex gap-3 mb-2">
+                                <img src="https://images.unsplash.com/photo-1583032015865-e39ce237ef69?auto=format&fit=crop&w=150&q=80" alt="Volcano Beef Burger" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
+                                <div>
+                                    <h4 class="font-bold text-sm text-gray-900 item-name">Volcano Beef Burger</h4>
+                                    <p class="text-xs text-gray-500">Double spicy, drink & chips</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
+                                <span class="font-extrabold text-brand text-base">85 HKD</span>
+                                <button onclick="addToCart('Volcano Beef Burger', 85)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1">
+                                    <i class="fa-solid fa-plus"></i><span>Add</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
+                            <div class="flex gap-3 mb-2">
+                                <img src="https://images.unsplash.com/photo-1542382257-80dedb725088?auto=format&fit=crop&w=150&q=80" alt="Smash Burger" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
+                                <div>
+                                    <h4 class="font-bold text-sm text-gray-900 item-name">Taka Tak Smash Beef Burger (Double)</h4>
+                                    <p class="text-xs text-gray-500">Juicy smashed beef patties</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
+                                <span class="font-extrabold text-brand text-base">89 HKD</span>
+                                <button onclick="addToCart('Taka Tak Smash Beef Burger (Double)', 89)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1">
+                                    <i class="fa-solid fa-plus"></i><span>Add</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GRILL, DONNER & KEBABS -->
+                <div class="menu-category" data-category="grill">
+                    <h3 class="text-lg font-bold text-gray-900 border-b-2 border-brand pb-2 mb-4 flex items-center justify-between">
+                        <span><i class="fa-solid fa-fire text-brand mr-2"></i> Grill, Kebab & Donner</span>
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
+                            <div class="flex gap-3 mb-2">
+                                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=150&q=80" alt="Mixed Grill" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
+                                <div>
+                                    <h4 class="font-bold text-sm text-gray-900 item-name">Mixed Grilled Platter</h4>
+                                    <p class="text-xs text-gray-500">Fish, chicken, tikka, wings, seekh, gola (2 drinks)</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
+                                <span class="font-extrabold text-brand text-base">199 HKD</span>
+                                <button onclick="addToCart('Mixed Grilled Platter', 199)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1">
+                                    <i class="fa-solid fa-plus"></i><span>Add</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
+                            <div class="flex gap-3 mb-2">
+                                <img src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=150&q=80" alt="Grilled Chicken" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
+                                <div>
+                                    <h4 class="font-bold text-sm text-gray-900 item-name">Grilled Chicken with Rice & Drink</h4>
+                                    <p class="text-xs text-gray-500">Tender seasoned grilled chicken</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
+                                <span class="font-extrabold text-brand text-base">65 HKD</span>
+                                <button onclick="addToCart('Grilled Chicken with Rice & Drink', 65)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1">
+                                    <i class="fa-solid fa-plus"></i><span>Add</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
+                            <div class="flex gap-3 mb-2">
+                                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=150&q=80" alt="Lamb Donner" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
+                                <div>
+                                    <h4 class="font-bold text-sm text-gray-900 item-name">Lamb Donner with Rice & Drink</h4>
+                                    <p class="text-xs text-gray-500">Savory spiced lamb donner</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
+                                <span class="font-extrabold text-brand text-base">70 HKD</span>
+                                <button onclick="addToCart('Lamb Donner with Rice & Drink', 70)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1">
+                                    <i class="fa-solid fa-plus"></i><span>Add</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
+                            <div class="flex gap-3 mb-2">
+                                <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=150&q=80" alt="Loaded Fries" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
+                                <div>
+                                    <h4 class="font-bold text-sm text-gray-900 item-name">Loaded Fries Meal</h4>
+                                    <p class="text-xs text-gray-500">Includes drink</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
+                                <span class="font-extrabold text-brand text-base">65 HKD</span>
+                                <button onclick="addToCart('Loaded Fries Meal', 65)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1">
+                                    <i class="fa-solid fa-plus"></i><span>Add</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PIZZAS -->
+                <div class="menu-category" data-category="pizza">
+                    <h3 class="text-lg font-bold text-gray-900 border-b-2 border-brand pb-2 mb-4 flex items-center justify-between">
+                        <span><i class="fa-solid fa-pizza-slice text-brand mr-2"></i> 12" Pizzas (Includes Drink)</span>
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
+                            <div class="flex gap-3 mb-2">
+                                <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=150&q=80" alt="Margherita Pizza" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
+                                <div>
+                                    <h4 class="font-bold text-sm text-gray-900 item-name">Margherita Pizza (12")</h4>
+                                    <p class="text-xs text-gray-500">Includes drink</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
+                                <span class="font-extrabold text-brand text-base">100 HKD</span>
+                                <button onclick="addToCart('Margherita Pizza (12\")', 100)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1">
+                                    <i class="fa-solid fa-plus"></i><span>Add</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
+                            <div class="flex gap-3 mb-2">
+                                <img src="https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=150&q=80" alt="Pepperoni Pizza" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
+                                <div>
+                                    <h4 class="font-bold text-sm text-gray-900 item-name">Pepperoni Cheese Stuffed Pizza (12")</h4>
+                                    <p class="text-xs text-gray-500">Includes drink</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
+                                <span class="font-extrabold text-brand text-base">130 HKD</span>
+                                <button onclick="addToCart('Pepperoni Cheese Stuffed Pizza (12\")', 130)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1">
+                                    <i class="fa-solid fa-plus"></i><span>Add</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
+                            <div class="flex gap-3 mb-2">
+                                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=150&q=80" alt="Chicken Tikka Pizza" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
+                                <div>
+                                    <h4 class="font-bold text-sm text-gray-900 item-name">Chicken Tikka Pizza (12")</h4>
+                                    <p class="text-xs text-gray-500">Includes drink</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
+                                <span class="font-extrabold text-brand text-base">120 HKD</span>
+                                <button onclick="addToCart('Chicken Tikka Pizza (12\")', 120)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1">
+                                    <i class="fa-solid fa-plus"></i><span>Add</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
+                            <div class="flex gap-3 mb-2">
+                                <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=150&q=80" alt="Crown Crust Pizza" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
+                                <div>
+                                    <h4 class="font-bold text-sm text-gray-900 item-name">Taka Tak Crown Crust Pizza</h4>
+                                    <p class="text-xs text-gray-500">Includes drink</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
+                                <span class="font-extrabold text-brand text-base">140 HKD</span>
+                                <button onclick="addToCart('Taka Tak Crown Crust Pizza', 140)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1">
+                                    <i class="fa-solid fa-plus"></i><span>Add</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SWEETS, DESSERTS & DRINKS -->
+                <div class="menu-category" data-category="dessert">
+                    <h3 class="text-lg font-bold text-gray-900 border-b-2 border-brand pb-2 mb-4 flex items-center justify-between">
+                        <span><i class="fa-solid fa-ice-cream text-brand mr-2"></i> Sweets, Milkshakes & Mojitos</span>
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
+                            <div class="flex gap-3 mb-2">
+                                <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=150&q=80" alt="Brownie" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
+                                <div>
+                                    <h4 class="font-bold text-sm text-gray-900 item-name">Homemade Fudge Brownie</h4>
+                                    <p class="text-xs text-gray-500">Rich chocolate fudge</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
+                                <span class="font-extrabold text-brand text-base">30 HKD</span>
+                                <button onclick="addToCart('Homemade Fudge Brownie', 30)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1">
+                                    <i class="fa-solid fa-plus"></i><span>Add</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
+                            <div class="flex gap-3 mb-2">
+                                <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=150&q=80" alt="Milkshake" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
+                                <div>
+                                    <h4 class="font-bold text-sm text-gray-900 item-name">Nutella Milkshake</h4>
+                                    <p class="text-xs text-gray-500">Halal ice cream blend</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
+                                <span class="font-extrabold text-brand text-base">45 HKD</span>
+                                <button onclick="addToCart('Nutella Milkshake', 45)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1">
+                                    <i class="fa-solid fa-plus"></i><span>Add</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
+                            <div class="flex gap-3 mb-2">
+                                <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=150&q=80" alt="Mojito" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
+                                <div>
+                                    <h4 class="font-bold text-sm text-gray-900 item-name">Mint Mojito</h4>
+                                    <p class="text-xs text-gray-500">Refreshing mint & lime mocktail</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
+                                <span class="font-extrabold text-brand text-base">27 HKD</span>
+                                <button onclick="addToCart('Mint Mojito', 27)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1">
+                                    <i class="fa-solid fa-plus"></i><span>Add</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
+                            <div class="flex gap-3 mb-2">
+                                <img src="https://images.unsplash.com/photo-1543253687-c931c8e01820?auto=format&fit=crop&w=150&q=80" alt="Standard Drink" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
+                                <div>
+                                    <h4 class="font-bold text-sm text-gray-900 item-name">Standard Drink (7UP, Water, Pepsi)</h4>
+                                    <p class="text-xs text-gray-500">Chilled canned beverage</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
+                                <span class="font-extrabold text-brand text-base">12 HKD</span>
+                                <button onclick="addToCart('Standard Drink', 12)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1">
+                                    <i class="fa-solid fa-plus"></i><span>Add</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Cart Sidebar (1 Column) -->
+        <div class="lg:col-span-1">
+            <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-5 sticky top-24">
+                <h3 class="text-lg font-bold text-gray-900 border-b border-gray-100 pb-3 mb-4 flex items-center justify-between">
+                    <span class="flex items-center"><i class="fa-solid fa-basket-shopping text-brand mr-2"></i> Your Pick-up Order</span>
+                    <span id="cartCountBadge" class="bg-brand text-white text-xs px-2 py-0.5 rounded-full font-bold">0</span>
+                </h3>
+
+                <!-- Cart Items List -->
+                <div id="cartItems" class="space-y-3 max-h-72 overflow-y-auto mb-4 pr-1">
+                    <p id="emptyCartMessage" class="text-gray-400 text-xs text-center py-6 italic">Your cart is currently empty. Add delicious items from the menu!</p>
+                </div>
+
+                <!-- Cart Total -->
+                <div class="border-t border-gray-100 pt-3 mb-4 space-y-2">
+                    <div class="flex justify-between text-sm font-medium text-gray-600">
+                        <span>Subtotal</span>
+                        <span id="cartSubtotal">0 HKD</span>
+                    </div>
+                    <div class="flex justify-between text-base font-extrabold text-gray-900">
+                        <span>Total</span>
+                        <span id="cartTotal" class="text-brand">0 HKD</span>
+                    </div>
+                </div>
+
+                <!-- Customer Details Form -->
+                <div class="space-y-3 mb-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1">Your Name</label>
+                        <input type="text" id="customerName" placeholder="Enter your name" class="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-brand">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1">Pickup Time / Notes</label>
+                        <input type="text" id="customerNotes" placeholder="e.g., Pickup in 20 mins" class="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-brand">
+                    </div>
+                </div>
+
+                <!-- Checkout WhatsApp Button -->
+                <button onclick="checkoutWhatsApp()" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-xl text-sm shadow-md transition flex items-center justify-center space-x-2">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Order via WhatsApp</span>
+                </button>
+                <p class="text-[10px] text-gray-400 text-center mt-2">Orders sent directly to Taka Tak Grill staff for fast pick-up confirmation.</p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-6 mt-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 text-center space-y-2">
+            <h4 class="font-bold text-base uppercase tracking-wider text-brand-light">Taka Tak Grill</h4>
+            <p class="text-xs text-gray-400">Halal Pick-up Restaurant • For orders call +852 5161 2730 / +852 5440 7867</p>
+            <p class="text-[10px] text-gray-500">&copy; 2026 Taka Tak Grill. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Interactive Cart and Filters -->
+    <script>
+        let cart = [];
+
+        function addToCart(name, price) {
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.qty += 1;
+            } else {
+                cart.push({ name, price, qty: 1 });
+            }
+            updateCartUI();
+        }
+
+        function updateQuantity(name, change) {
+            const item = cart.find(item => item.name === name);
+            if (item) {
+                item.qty += change;
+                if (item.qty <= 0) {
+                    cart = cart.filter(cartItem => cartItem.name !== name);
+                }
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const cartItemsEl = document.getElementById('cartItems');
+            const cartCountBadge = document.getElementById('cartCountBadge');
+            const cartSubtotal = document.getElementById('cartSubtotal');
+            const cartTotal = document.getElementById('cartTotal');
+            const emptyCartMessage = document.getElementById('emptyCartMessage');
+
+            cartCountBadge.innerText = cart.reduce((sum, item) => sum + item.qty, 0);
+
+            if (cart.length === 0) {
+                cartItemsEl.innerHTML = '<p id="emptyCartMessage" class="text-gray-400 text-xs text-center py-6 italic">Your cart is currently empty. Add delicious items from the menu!</p>';
+                cartSubtotal.innerText = '0 HKD';
+                cartTotal.innerText = '0 HKD';
+                return;
+            }
+
+            let html = '';
+            let total = 0;
+
+            cart.forEach(item => {
+                const itemTotal = item.price * item.qty;
+                total += itemTotal;
+                html += `
+                    <div class="flex items-center justify-between bg-gray-50 p-2 rounded-lg border border-gray-100 text-xs">
+                        <div class="flex-1 pr-2">
+                            <p class="font-bold text-gray-900">${item.name}</p>
+                            <p class="text-gray-500">${item.price} HKD x ${item.qty}</p>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button onclick="updateQuantity('${item.name}', -1)" class="w-6 h-6 bg-gray-200 hover:bg-gray-300 rounded font-bold text-gray-700 flex items-center justify-center">-</button>
+                            <span class="font-bold text-gray-800">${item.qty}</span>
+                            <button onclick="updateQuantity('${item.name}', 1)" class="w-6 h-6 bg-gray-200 hover:bg-gray-300 rounded font-bold text-gray-700 flex items-center justify-center">+</button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            cartItemsEl.innerHTML = html;
+            cartSubtotal.innerText = total + ' HKD';
+            cartTotal.innerText = total + ' HKD';
+        }
+
+        function filterCategory(category) {
+            // Update active tab buttons
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.classList.remove('active', 'bg-brand', 'text-white');
+                btn.classList.add('bg-gray-100', 'text-gray-600');
+            });
+            event.target.classList.remove('bg-gray-100', 'text-gray-600');
+            event.target.classList.add('active', 'bg-brand', 'text-white');
+
+            // Filter categories
+            const categories = document.querySelectorAll('.menu-category');
+            categories.forEach(cat => {
+                if (category === 'all' || cat.getAttribute('data-category') === category) {
+                    cat.style.display = 'block';
+                } else {
+                    cat.style.display = 'none';
+                }
+            });
+        }
+
+        function filterMenu() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const items = document.querySelectorAll('.menu-item');
+            
+            items.forEach(item => {
+                const name = item.querySelector('.item-name').innerText.toLowerCase();
+                if (name.includes(query)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        function checkoutWhatsApp() {
+            if (cart.length === 0) {
+                alert('Please add items to your cart before ordering.');
+                return;
+            }
+
+            const name = document.getElementById('customerName').value.trim();
+            const notes = document.getElementById('customerNotes').value.trim();
+
+            let message = `Hello Taka Tak Grill! I would like to place a pick-up order:\n\n`;
+            if (name) message += `*Customer Name:* ${name}\n`;
+            if (notes) message += `*Notes:* ${notes}\n`;
+            message += `------------------\n`;
+
+            let total = 0;
+            cart.forEach(item => {
+                message += `• ${item.name} x ${item.qty} (${item.price * item.qty} HKD)\n`;
+                total += item.price * item.qty;
+            });
+
+            message += `------------------\n`;
+            message += `*Total Amount:* ${total} HKD\n`;
+            message += `Please confirm my order. Thank you!`;
+
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/85251612730?text=${encodedMessage}`, '_blank');
+        }
+    </script>
+</body>
+</html>
