@@ -25,7 +25,21 @@
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans antialiased min-h-screen flex flex-col">
 
-    <!-- Top Banner & Header -->
+    <!-- Top Status & Address Bar -->
+    <div class="bg-gray-900 text-gray-300 text-xs py-2 px-4 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center space-x-2 text-center sm:text-left">
+                <i class="fa-solid fa-location-dot text-brand-accent"></i>
+                <span>Workshop 11, 7/F, Block B, Veristrong Industrial Centre, 34-36 Au Pui Wan St, NT</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span><i class="fa-regular fa-clock text-brand-accent mr-1"></i> Hours: 10:30 AM - 9:30 PM</span>
+                <span id="storeStatusBadge" class="px-2 py-0.5 rounded font-bold bg-gray-800 text-gray-400">Checking status...</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
     <header class="bg-gradient-to-r from-gray-900 via-brand-dark to-gray-900 text-white shadow-lg sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
             <div class="flex items-center space-x-3">
@@ -140,6 +154,9 @@
                             <div class="flex gap-3 mb-2">
                                 <img src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=150&q=80" alt="Lamb Roll" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
                                 <div>
+                                    <div class="flex items-center gap-2 mb-1">
+                                        <span class="bg-amber-100 text-amber-800 text-[9px] font-bold px-1.5 py-0.5 rounded">Bestseller</span>
+                                    </div>
                                     <h4 class="font-bold text-sm text-gray-900 item-name">Lamb Roll</h4>
                                     <p class="text-xs text-gray-500">Juicy, tender spiced lamb slices wrapped in fresh flatbread with salad and signature sauce</p>
                                 </div>
@@ -210,6 +227,9 @@
                             <div class="flex gap-3 mb-2">
                                 <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=150&q=80" alt="Mixed donner roll" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
                                 <div>
+                                    <div class="flex items-center gap-2 mb-1">
+                                        <span class="bg-amber-100 text-amber-800 text-[9px] font-bold px-1.5 py-0.5 rounded">Bestseller</span>
+                                    </div>
                                     <h4 class="font-bold text-sm text-gray-900 item-name">Mixed donner roll</h4>
                                     <p class="text-xs text-gray-500">The ultimate combination of both chicken and beef donner meat in a single wrap</p>
                                 </div>
@@ -358,6 +378,9 @@
                             <div class="flex gap-3 mb-2">
                                 <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=150&q=80" alt="Single cheese burger" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
                                 <div>
+                                    <div class="flex items-center gap-2 mb-1">
+                                        <span class="bg-amber-100 text-amber-800 text-[9px] font-bold px-1.5 py-0.5 rounded">Bestseller</span>
+                                    </div>
                                     <h4 class="font-bold text-sm text-gray-900 item-name">Smash Beef Single Cheese Burger</h4>
                                     <p class="text-xs text-gray-500">Juicy single smashed beef patty layered with melted cheese and house sauce</p>
                                 </div>
@@ -576,6 +599,9 @@
                             <div class="flex gap-3 mb-2">
                                 <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=150&q=80" alt="Lamb with rice" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
                                 <div>
+                                    <div class="flex items-center gap-2 mb-1">
+                                        <span class="bg-amber-100 text-amber-800 text-[9px] font-bold px-1.5 py-0.5 rounded">Bestseller</span>
+                                    </div>
                                     <h4 class="font-bold text-sm text-gray-900 item-name">Lamb with Rice</h4>
                                     <p class="text-xs text-gray-500">Slow-cooked tender lamb served over a bed of fragrant, spiced seasoned rice</p>
                                 </div>
@@ -618,6 +644,9 @@
                             <div class="flex gap-3 mb-2">
                                 <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=150&q=80" alt="Chicken tikka with rice" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
                                 <div>
+                                    <div class="flex items-center gap-2 mb-1">
+                                        <span class="bg-amber-100 text-amber-800 text-[9px] font-bold px-1.5 py-0.5 rounded">Bestseller</span>
+                                    </div>
                                     <h4 class="font-bold text-sm text-gray-900 item-name">Chicken Tikka with Rice</h4>
                                     <p class="text-xs text-gray-500">Grilled tandoori chicken tikka pieces served over aromatic seasoned rice</p>
                                 </div>
@@ -1338,13 +1367,37 @@
     <footer class="bg-gray-900 text-white py-6 mt-12 border-t border-gray-800">
         <div class="max-w-7xl mx-auto px-4 text-center space-y-2">
             <h4 class="font-bold text-base uppercase tracking-wider text-brand-light">Taka Tak Grill</h4>
-            <p class="text-xs text-gray-400">Halal Restaurant • For orders call +852 5161 2730 / +852 5440 7867</p>
+            <p class="text-xs text-gray-400">Workshop 11, 7/F, Block B, Veristrong Industrial Centre, 34-36 Au Pui Wan St, NT</p>
+            <p class="text-xs text-gray-400">For orders call +852 5161 2730 / +852 5440 7867</p>
             <p class="text-[10px] text-gray-500">&copy; 2026 Taka Tak Grill. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- JavaScript for Interactive Cart and Filters -->
+    <!-- JavaScript for Interactive Cart, Filters, & Live Store Hours -->
     <script>
+        // Check Store Status (10:30 AM to 9:30 PM)
+        function checkStoreStatus() {
+            const now = new Date();
+            const currentHour = now.getHours();
+            const currentMinute = now.getMinutes();
+            const currentTimeMinutes = currentHour * 60 + currentMinute;
+            
+            // 10:30 AM = 10 * 60 + 30 = 630 minutes
+            // 9:30 PM (21:30) = 21 * 60 + 30 = 1290 minutes
+            const openingTime = 630;
+            const closingTime = 1290;
+
+            const badge = document.getElementById('storeStatusBadge');
+            if (currentTimeMinutes >= openingTime && currentTimeMinutes <= closingTime) {
+                badge.className = "px-2 py-0.5 rounded font-bold bg-green-500 text-white text-[10px]";
+                badge.innerText = "🟢 OPEN NOW";
+            } else {
+                badge.className = "px-2 py-0.5 rounded font-bold bg-red-600 text-white text-[10px]";
+                badge.innerText = "🔴 CLOSED";
+            }
+        }
+        checkStoreStatus();
+
         let cart = [];
 
         function addToCart(name, price) {
@@ -1458,7 +1511,7 @@
             const notes = document.getElementById('customerNotes').value.trim();
             const cutlerySelect = document.getElementById('cutleryPreference').value;
 
-            let message = `Hello Taka Tak Grill! I would like to place an order:\n\n`;
+            let message = `Hello Taka Tak Grill! I would like to place a pickup order:\n\n`;
             if (name) message += `*Customer Name:* ${name}\n`;
             if (notes) message += `*Notes:* ${notes}\n`;
             message += `*Cutlery:* ${cutlerySelect}\n`;
@@ -1476,7 +1529,7 @@
             message += `------------------\n`;
             if (cutleryFee > 0) message += `Cutlery Fee: $1\n`;
             message += `*Total Amount:* $${finalTotal}\n`;
-            message += `Please confirm my order. Thank you!`;
+            message += `Please confirm my order for pickup at Workshop 11, 7/F, Block B, Veristrong Industrial Centre, 34-36 Au Pui Wan St. Thank you!`;
 
             const encodedMessage = encodeURIComponent(message);
             window.open(`https://wa.me/85254407867?text=${encodedMessage}`, '_blank');
