@@ -54,7 +54,7 @@
     </div>
 
     <!-- Main Header -->
-    <header class="bg-gradient-to-r from-gray-900 via-brand-dark to-gray-900 text-white shadow-lg sticky top-0 z-50">
+    <header class="bg-gradient-to-r from-gray-900 via-brand-dark to-gray-900 text-white shadow-lg sticky top-0 z-40">
         <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
             <div class="flex items-center space-x-3">
                 <div class="bg-brand-accent text-gray-900 p-3 rounded-xl shadow-md text-2xl font-black">
@@ -66,7 +66,6 @@
                 </div>
             </div>
 
-            <!-- Contact & Delivery Options -->
             <div class="flex flex-wrap items-center gap-3">
                 <a href="tel:+85251612730" class="bg-white/10 hover:bg-white/20 px-3 py-2 rounded-lg text-xs font-semibold flex items-center space-x-2 transition">
                     <i class="fa-solid fa-phone text-brand-accent"></i>
@@ -88,10 +87,9 @@
     <!-- Main Layout -->
     <main class="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8 flex-grow w-full grid grid-cols-1 lg:grid-cols-3 gap-8">
         
-        <!-- Menu Section (2 Columns) -->
+        <!-- Menu Section -->
         <div class="lg:col-span-2 space-y-6">
             
-            <!-- Search & Filter Bar -->
             <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col sm:flex-row gap-3 items-center justify-between">
                 <div class="relative w-full sm:w-64">
                     <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
@@ -99,7 +97,6 @@
                     </span>
                     <input type="text" id="searchInput" placeholder="Search entire menu..." onkeyup="filterMenu()" class="w-full pl-10 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand">
                 </div>
-                <!-- Category Tabs Scroll -->
                 <div class="flex overflow-x-auto w-full sm:w-auto gap-2 pb-1 sm:pb-0 scrollbar-none text-xs font-semibold">
                     <button onclick="filterCategory('all')" class="cat-btn active px-3 py-1.5 rounded-lg bg-brand text-white whitespace-nowrap transition">All Items</button>
                     <button onclick="filterCategory('promo')" class="cat-btn px-3 py-1.5 rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200 whitespace-nowrap transition">Promo</button>
@@ -108,7 +105,7 @@
                     <button onclick="filterCategory('grills')" class="cat-btn px-3 py-1.5 rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200 whitespace-nowrap transition">Pasta, Grills & Meat</button>
                     <button onclick="filterCategory('curries')" class="cat-btn px-3 py-1.5 rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200 whitespace-nowrap transition">Curries & Salads</button>
                     <button onclick="filterCategory('pizzas')" class="cat-btn px-3 py-1.5 rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200 whitespace-nowrap transition">Pizzas</button>
-                    <button onclick="filterCategory('sides')" class="cat-btn px-3 py-1.5 rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200 whitespace-nowrap transition">Sides, Drinks & Desserts</button>
+                    <button onclick="filterCategory('sides')" class="cat-btn px-3 py-1.5 rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200 whitespace-nowrap transition">Sides & Drinks</button>
                 </div>
             </div>
 
@@ -136,8 +133,8 @@
                                     <span class="bg-red-100 text-red-700 text-[10px] font-bold px-1.5 py-0.5 rounded">SAVE $139</span>
                                 </div>
                                 <span class="font-black text-brand text-lg">$219</span>
-                                <button onclick="addToCart('2 12\' pizza special offer', 219)" class="bg-gray-900 hover:bg-brand text-white px-4 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1 shadow mt-1">
-                                    <i class="fa-solid fa-plus"></i><span>Add to Order</span>
+                                <button onclick="openCustomizer('2 12\' pizza special offer', 219, 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=200&q=80')" class="bg-gray-900 hover:bg-brand text-white px-4 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1 shadow mt-1">
+                                    <i class="fa-solid fa-plus"><span>Customize & Add</span></i>
                                 </button>
                             </div>
                         </div>
@@ -149,573 +146,25 @@
                     <h3 class="text-lg font-bold text-gray-900 border-b-2 border-brand pb-2 mb-4 flex items-center justify-between">
                         <span><i class="fa-solid fa-bowl-food text-brand mr-2"></i> Donner Rolls & Bun Kebabs</span>
                     </h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=150&q=80" alt="Lamb Roll" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Lamb Roll</h4>
-                                    <p class="text-xs text-gray-500">Delicious wrap filled with seasoned lamb</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$89</span>
-                                <button onclick="addToCart('Lamb Roll', 89)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?auto=format&fit=crop&w=150&q=80" alt="Zinger roll" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Zinger roll</h4>
-                                    <p class="text-xs text-gray-500">Crispy zinger chicken wrap</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$59</span>
-                                <button onclick="addToCart('Zinger roll', 59)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=150&q=80" alt="Beef Roll" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Beef Roll</h4>
-                                    <p class="text-xs text-gray-500">Savory beef wrap</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$79</span>
-                                <button onclick="addToCart('Beef Roll', 79)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=150&q=80" alt="Chicken tikka roll" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Chicken tikka roll</h4>
-                                    <p class="text-xs text-gray-500">Tandoori chicken tikka wrap</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$70</span>
-                                <button onclick="addToCart('Chicken tikka roll', 70)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=150&q=80" alt="Chicken doner roll" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Chicken doner roll</h4>
-                                    <p class="text-xs text-gray-500">Seasoned chicken donner wrap</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$75</span>
-                                <button onclick="addToCart('Chicken doner roll', 75)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=150&q=80" alt="mixed donner roll" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">mixed donner roll</h4>
-                                    <p class="text-xs text-gray-500">Combination of chicken and beef donner</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$89</span>
-                                <button onclick="addToCart('mixed donner roll', 89)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=150&q=80" alt="Halloumi Cheese Roll" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Halloumi Cheese Roll</h4>
-                                    <p class="text-xs text-gray-500">Grilled halloumi wrap</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$60</span>
-                                <button onclick="addToCart('Halloumi Cheese Roll', 60)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <!-- Bun Kebabs -->
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?auto=format&fit=crop&w=150&q=80" alt="Chapli Bun kebab" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Chapli Bun kebab</h4>
-                                    <p class="text-xs text-gray-500">Spicy beef chapli patty in a bun</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$60</span>
-                                <button onclick="addToCart('Chapli Bun kebab', 60)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=150&q=80" alt="gola bun kebab" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">gola bun kebab</h4>
-                                    <p class="text-xs text-gray-500">Tender gola kebab in a bun</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$55</span>
-                                <button onclick="addToCart('gola bun kebab', 55)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=150&q=80" alt="Shami bun kebab" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Shami bun kebab</h4>
-                                    <p class="text-xs text-gray-500">Classic shami patty in a bun</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$50</span>
-                                <button onclick="addToCart('Shami bun kebab', 50)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=150&q=80" alt="Zinger bun kebab" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Zinger bun kebab</h4>
-                                    <p class="text-xs text-gray-500">Crunchy zinger fillet in a bun</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$65</span>
-                                <button onclick="addToCart('Zinger bun kebab', 65)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="rollsGrid">
+                        <!-- Items rendered via helper function below -->
                     </div>
                 </div>
 
-                <!-- FRIED CHICKEN & BURGER MEAL SET -->
+                <!-- FRIED CHICKEN & BURGERS -->
                 <div class="menu-category" data-category="burgers">
                     <h3 class="text-lg font-bold text-gray-900 border-b-2 border-brand pb-2 mb-4 flex items-center justify-between">
-                        <span><i class="fa-solid fa-burger text-brand mr-2"></i> Fried Chicken & Burger Meal Set</span>
+                        <span><i class="fa-solid fa-burger text-brand mr-2"></i> Fried Chicken & Burgers</span>
                     </h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=150&q=80" alt="crispy wings" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">crispy wings (5pcs)</h4>
-                                    <p class="text-xs text-gray-500">5 pieces of crispy fried wings</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$60</span>
-                                <button onclick="addToCart('crispy wings (5pcs)', 60)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1608039829572-78524f79c4c7?auto=format&fit=crop&w=150&q=80" alt="buffalo wings" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">buffalo wings (5pcs)</h4>
-                                    <p class="text-xs text-gray-500">Tangy spicy buffalo wings</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$60</span>
-                                <button onclick="addToCart('buffalo wings (5pcs)', 60)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=150&q=80" alt="H&S Crispy wings combo" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">H&S Crispy wings combo</h4>
-                                    <p class="text-xs text-gray-500">Hot and spicy crispy wings combo</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$55</span>
-                                <button onclick="addToCart('H&S Crispy wings combo', 55)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?auto=format&fit=crop&w=150&q=80" alt="Chicken Chappli Burger" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Chicken Chappli Burger</h4>
-                                    <p class="text-xs text-gray-500">Chicken chapli burger meal</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$65</span>
-                                <button onclick="addToCart('Chicken Chappli Burger', 65)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=150&q=80" alt="single cheese burger" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">single cheese burger</h4>
-                                    <p class="text-xs text-gray-500">Smash beef single cheese burger</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$119</span>
-                                <button onclick="addToCart('single cheese burger', 119)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1583032015865-e39ce237ef69?auto=format&fit=crop&w=150&q=80" alt="volcano beef burger" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">volcano beef burger</h4>
-                                    <p class="text-xs text-gray-500">Spicy volcano beef burger</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$135</span>
-                                <button onclick="addToCart('volcano beef burger', 135)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1625813506062-0aeb1d7a094b?auto=format&fit=crop&w=150&q=80" alt="crisoy chicken burger" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">crisoy chicken burger</h4>
-                                    <p class="text-xs text-gray-500">Crispy chicken burger</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$89</span>
-                                <button onclick="addToCart('crisoy chicken burger', 89)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=150&q=80" alt="MAc zinger burger" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">MAc zinger burger</h4>
-                                    <p class="text-xs text-gray-500">Double decker mac zinger burger</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$109</span>
-                                <button onclick="addToCart('MAc zinger burger', 109)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=150&q=80" alt="zinger burger" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">zinger burger</h4>
-                                    <p class="text-xs text-gray-500">Classic zinger burger</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$85</span>
-                                <button onclick="addToCart('zinger burger', 85)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="burgersGrid"></div>
                 </div>
 
-                <!-- PASTA, BBQ & GRILLED ITEMS & MEAT LOVERS -->
+                <!-- PASTA, BBQ & MEAT LOVERS -->
                 <div class="menu-category" data-category="grills">
                     <h3 class="text-lg font-bold text-gray-900 border-b-2 border-brand pb-2 mb-4 flex items-center justify-between">
                         <span><i class="fa-solid fa-utensils text-brand mr-2"></i> Pasta, BBQ, Grills & Meat Platters</span>
                     </h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <!-- Pasta -->
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1621996346565-e3d5d6281298?auto=format&fit=crop&w=150&q=80" alt="penne with chicken kofta" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">penne with chicken kofta</h4>
-                                    <p class="text-xs text-gray-500">Penne pasta with chicken meatballs</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$70</span>
-                                <button onclick="addToCart('penne with chicken kofta', 70)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1608897013039-887f21d8c804?auto=format&fit=crop&w=150&q=80" alt="roasted beef penne in tomato sauce" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">roasted beef penne in tomato sauce</h4>
-                                    <p class="text-xs text-gray-500">Roasted beef penne in tomato sauce</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$80</span>
-                                <button onclick="addToCart('roasted beef penne in tomato sauce', 80)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1621996346565-e3d5d6281298?auto=format&fit=crop&w=150&q=80" alt="roasted chiekn penne in tomato sauce" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">roasted chiekn penne in tomato sauce</h4>
-                                    <p class="text-xs text-gray-500">Roasted chicken penne in tomato sauce</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$60</span>
-                                <button onclick="addToCart('roasted chiekn penne in tomato sauce', 60)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=150&q=80" alt="chicekn tikka oenne with tomato sauce" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">chicekn tikka oenne with tomato sauce</h4>
-                                    <p class="text-xs text-gray-500">Chicken tikka penne with tomato sauce</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$60</span>
-                                <button onclick="addToCart('chicekn tikka oenne with tomato sauce', 60)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <!-- BBQ & Grilled -->
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=150&q=80" alt="Whole grilled fiosh" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Whole grilled fiosh</h4>
-                                    <p class="text-xs text-gray-500">Whole grilled fish</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$95</span>
-                                <button onclick="addToCart('Whole grilled fiosh', 95)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=150&q=80" alt="chicken gola kebab (4pcs)" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">chicken gola kebab (4pcs)</h4>
-                                    <p class="text-xs text-gray-500">4 pieces chicken gola kebab</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$45</span>
-                                <button onclick="addToCart('chicken gola kebab (4pcs)', 45)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?auto=format&fit=crop&w=150&q=80" alt="Chicken chapli kebabb (4pcs)" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Chicken chapli kebabb (4pcs)</h4>
-                                    <p class="text-xs text-gray-500">4 pieces chicken chapli kebab</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$35</span>
-                                <button onclick="addToCart('Chicken chapli kebabb (4pcs)', 35)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=150&q=80" alt="Chiekcn shami kebab (4pcs)" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Chiekcn shami kebab (4pcs)</h4>
-                                    <p class="text-xs text-gray-500">4 pieces chicken shami kebab</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$35</span>
-                                <button onclick="addToCart('Chiekcn shami kebab (4pcs)', 35)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=150&q=80" alt="chicken seekh kebab (4pcs)" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">chicken seekh kebab (4pcs)</h4>
-                                    <p class="text-xs text-gray-500">4 pieces chicken seekh kebab</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$50</span>
-                                <button onclick="addToCart('chicken seekh kebab (4pcs)', 50)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <!-- Meat Lovers -->
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=150&q=80" alt="Lamb with chips" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Lamb with chips</h4>
-                                    <p class="text-xs text-gray-500">Lamb with french fries</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$89</span>
-                                <button onclick="addToCart('Lamb with chips', 89)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=150&q=80" alt="lamb with rice" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">lamb with rice</h4>
-                                    <p class="text-xs text-gray-500">Lamb with seasoned rice</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$89</span>
-                                <button onclick="addToCart('lamb with rice', 89)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=150&q=80" alt="beef wirh rice" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">beef wirh rice</h4>
-                                    <p class="text-xs text-gray-500">Beef with seasoned rice</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$80</span>
-                                <button onclick="addToCart('beef wirh rice', 80)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=150&q=80" alt="beef with chips" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">beef with chips</h4>
-                                    <p class="text-xs text-gray-500">Beef with french fries</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$85</span>
-                                <button onclick="addToCart('beef with chips', 85)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=150&q=80" alt="chiekn tikka with rice" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">chiekn tikka with rice</h4>
-                                    <p class="text-xs text-gray-500">Chicken tikka with rice</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$65</span>
-                                <button onclick="addToCart('chiekn tikka with rice', 65)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?auto=format&fit=crop&w=150&q=80" alt="chicken tika with chips" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">chicken tika with chips</h4>
-                                    <p class="text-xs text-gray-500">Chicken tikka with chips</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$75</span>
-                                <button onclick="addToCart('chicken tika with chips', 75)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?auto=format&fit=crop&w=150&q=80" alt="Roast chicken withrice" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Roast chicken withrice</h4>
-                                    <p class="text-xs text-gray-500">Roast chicken with rice</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$65</span>
-                                <button onclick="addToCart('Roast chicken withrice', 65)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=150&q=80" alt="roast chiekn with chips" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">roast chiekn with chips</h4>
-                                    <p class="text-xs text-gray-500">Roast chicken with chips</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$75</span>
-                                <button onclick="addToCart('roast chiekn with chips', 75)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=150&q=80" alt="Mix beef & chicken with rice" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Mix beef & chicken with rice</h4>
-                                    <p class="text-xs text-gray-500">Mixed beef and chicken with rice</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$89</span>
-                                <button onclick="addToCart('Mix beef & chicken with rice', 89)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=150&q=80" alt="Mix beef & chicken with rchips" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Mix beef & chicken with rchips</h4>
-                                    <p class="text-xs text-gray-500">Mixed beef and chicken with chips</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$79</span>
-                                <button onclick="addToCart('Mix beef & chicken with rchips', 79)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="grillsGrid"></div>
                 </div>
 
                 <!-- CURRIES & SALADS -->
@@ -723,162 +172,7 @@
                     <h3 class="text-lg font-bold text-gray-900 border-b-2 border-brand pb-2 mb-4 flex items-center justify-between">
                         <span><i class="fa-solid fa-bowl-rice text-brand mr-2"></i> Curries & Salads</span>
                     </h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=150&q=80" alt="Chiekn kofata(4pcs) curry with rice" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Chiekn kofata(4pcs) curry with rice</h4>
-                                    <p class="text-xs text-gray-500">Chicken kofta curry with rice</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$70</span>
-                                <button onclick="addToCart('Chiekn kofata(4pcs) curry with rice', 70)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=150&q=80" alt="Mic beef & chicken curry w/ rice" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Mic beef & chicken curry w/ rice</h4>
-                                    <p class="text-xs text-gray-500">Mixed beef and chicken curry with rice</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$79</span>
-                                <button onclick="addToCart('Mic beef & chicken curry w/ rice', 79)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=150&q=80" alt="Roast beef curry" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Roast beef curry</h4>
-                                    <p class="text-xs text-gray-500">Roast beef curry</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$79</span>
-                                <button onclick="addToCart('Roast beef curry', 79)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=150&q=80" alt="Chicken tikka curry" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Chicken tikka curry</h4>
-                                    <p class="text-xs text-gray-500">Chicken tikka curry</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$75</span>
-                                <button onclick="addToCart('Chicken tikka curry', 75)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=150&q=80" alt="Roast chicken curry" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Roast chicken curry</h4>
-                                    <p class="text-xs text-gray-500">Roast chicken curry</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$75</span>
-                                <button onclick="addToCart('Roast chicken curry', 75)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <!-- Salads -->
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=150&q=80" alt="Lamb salad" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Lamb salad</h4>
-                                    <p class="text-xs text-gray-500">Fresh salad with tender lamb</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$85</span>
-                                <button onclick="addToCart('Lamb salad', 85)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=150&q=80" alt="Beef salad" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Beef salad</h4>
-                                    <p class="text-xs text-gray-500">Fresh salad with seasoned beef</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$74</span>
-                                <button onclick="addToCart('Beef salad', 74)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=150&q=80" alt="Chicken tika salad" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Chicken tika salad</h4>
-                                    <p class="text-xs text-gray-500">Chicken tikka salad</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$64</span>
-                                <button onclick="addToCart('Chicken tika salad', 64)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=150&q=80" alt="Roast chicken salad" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Roast chicken salad</h4>
-                                    <p class="text-xs text-gray-500">Roast chicken salad</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$64</span>
-                                <button onclick="addToCart('Roast chicken salad', 64)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=150&q=80" alt="Halloumi chese salad" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Halloumi chese salad</h4>
-                                    <p class="text-xs text-gray-500">Halloumi cheese salad</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$72</span>
-                                <button onclick="addToCart('Halloumi chese salad', 72)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=150&q=80" alt="Garden salad" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Garden salad</h4>
-                                    <p class="text-xs text-gray-500">Fresh garden salad</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$54</span>
-                                <button onclick="addToCart('Garden salad', 54)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="curriesGrid"></div>
                 </div>
 
                 <!-- 12" PIZZAS -->
@@ -886,444 +180,21 @@
                     <h3 class="text-lg font-bold text-gray-900 border-b-2 border-brand pb-2 mb-4 flex items-center justify-between">
                         <span><i class="fa-solid fa-pizza-slice text-brand mr-2"></i> 12" Pizzas</span>
                     </h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=150&q=80" alt="Chicken tikka pizza" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Chicken tikka pizza</h4>
-                                    <p class="text-xs text-gray-500">Chicken tikka 12" pizza</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$150</span>
-                                <button onclick="addToCart('Chicken tikka pizza', 150)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=150&q=80" alt="Crown burst cheesy pizza" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Crown burst cheesy pizza</h4>
-                                    <p class="text-xs text-gray-500">Crown burst cheesy 12" pizza</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$185</span>
-                                <button onclick="addToCart('Crown burst cheesy pizza', 185)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?auto=format&fit=crop&w=150&q=80" alt="Garlic chicken pizza" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Garlic chicken pizza</h4>
-                                    <p class="text-xs text-gray-500">Garlic chicken 12" pizza</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$139</span>
-                                <button onclick="addToCart('Garlic chicken pizza', 139)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=150&q=80" alt="Mixed special pizza" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Mixed special pizza</h4>
-                                    <p class="text-xs text-gray-500">Mixed special 12" pizza</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$169</span>
-                                <button onclick="addToCart('Mixed special pizza', 169)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=150&q=80" alt="Cheeses stuffed peoporni pizza" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Cheeses stuffed peoporni pizza</h4>
-                                    <p class="text-xs text-gray-500">Cheese stuffed pepperoni 12" pizza</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$179</span>
-                                <button onclick="addToCart('Cheeses stuffed peoporni pizza', 179)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=150&q=80" alt="Vegetarian pizza" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Vegetarian pizza</h4>
-                                    <p class="text-xs text-gray-500">Fresh vegetable 12" pizza</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$139</span>
-                                <button onclick="addToCart('Vegetarian pizza', 139)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=150&q=80" alt="Margherita pizza" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Margherita pizza</h4>
-                                    <p class="text-xs text-gray-500">Classic margherita 12" pizza</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$119</span>
-                                <button onclick="addToCart('Margherita pizza', 119)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="pizzasGrid"></div>
                 </div>
 
-                <!-- SIDE ORDERS, DESSERTS, MILKSHAKES & BEVERAGES -->
+                <!-- SIDES, DESSERTS, MILKSHAKES & BEVERAGES -->
                 <div class="menu-category" data-category="sides">
                     <h3 class="text-lg font-bold text-gray-900 border-b-2 border-brand pb-2 mb-4 flex items-center justify-between">
-                        <span><i class="fa-solid fa-utensils text-brand mr-2"></i> Side Orders, Desserts, Milkshakes & Beverages</span>
+                        <span><i class="fa-solid fa-utensils text-brand mr-2"></i> Sides, Desserts, Milkshakes & Beverages</span>
                     </h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=150&q=80" alt="Zinger fries" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Zinger fries</h4>
-                                    <p class="text-xs text-gray-500">Spicy zinger fries</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$65</span>
-                                <button onclick="addToCart('Zinger fries', 65)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=150&q=80" alt="Chicken strips (6pcs)" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Chicken strips (6pcs)</h4>
-                                    <p class="text-xs text-gray-500">6 pieces chicken breast strips</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$55</span>
-                                <button onclick="addToCart('Chicken strips (6pcs)', 55)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=150&q=80" alt="Hot chilli sauce extra" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Hot chilli sauce extra</h4>
-                                    <p class="text-xs text-gray-500">Extra hot chilli sauce</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$10</span>
-                                <button onclick="addToCart('Hot chilli sauce extra', 10)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=150&q=80" alt="Garlic sauce extra" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Garlic sauce extra</h4>
-                                    <p class="text-xs text-gray-500">Extra garlic sauce</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$10</span>
-                                <button onclick="addToCart('Garlic sauce extra', 10)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=150&q=80" alt="Fresh mint sauce extra" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Fresh mint sauce extra</h4>
-                                    <p class="text-xs text-gray-500">Extra fresh mint sauce</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$10</span>
-                                <button onclick="addToCart('Fresh mint sauce extra', 10)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=150&q=80" alt="Chicken samosa (3pcs)" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Chicken samosa (3pcs)</h4>
-                                    <p class="text-xs text-gray-500">3 pieces chicken samosa</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$35</span>
-                                <button onclick="addToCart('Chicken samosa (3pcs)', 35)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1548340748-6d2b7d7da28e?auto=format&fit=crop&w=150&q=80" alt="Mozzarella sticks ( 5pcs)" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Mozzarella sticks ( 5pcs)</h4>
-                                    <p class="text-xs text-gray-500">5 pieces mozzarella sticks</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$54</span>
-                                <button onclick="addToCart('Mozzarella sticks ( 5pcs)', 54)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=150&q=80" alt="Samosa veg (3pcs)" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Samosa veg (3pcs)</h4>
-                                    <p class="text-xs text-gray-500">3 pieces vegetable samosa</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$35</span>
-                                <button onclick="addToCart('Samosa veg (3pcs)', 35)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=150&q=80" alt="Chips" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Chips</h4>
-                                    <p class="text-xs text-gray-500">French fries</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$32</span>
-                                <button onclick="addToCart('Chips', 32)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <!-- Desserts -->
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=150&q=80" alt="Brownie" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Brownie</h4>
-                                    <p class="text-xs text-gray-500">Chocolate fudge brownie</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$39</span>
-                                <button onclick="addToCart('Brownie', 39)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=150&q=80" alt="Classic tiramisu" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Classic tiramisu</h4>
-                                    <p class="text-xs text-gray-500">Classic tiramisu dessert</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$50</span>
-                                <button onclick="addToCart('Classic tiramisu', 50)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=150&q=80" alt="Pistachio tiramisu" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Pistachio tiramisu</h4>
-                                    <p class="text-xs text-gray-500">Pistachio tiramisu dessert</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$50</span>
-                                <button onclick="addToCart('Pistachio tiramisu', 50)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=150&q=80" alt="Baklava (2pcs)" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Baklava (2pcs)</h4>
-                                    <p class="text-xs text-gray-500">2 pieces baklava pastry</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$35</span>
-                                <button onclick="addToCart('Baklava (2pcs)', 35)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <!-- Milkshakes -->
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=150&q=80" alt="Pistachio mint milk shake" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Pistachio mint milk shake</h4>
-                                    <p class="text-xs text-gray-500">Pistachio mint milkshake</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$45</span>
-                                <button onclick="addToCart('Pistachio mint milk shake', 45)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=150&q=80" alt="Vanilla biscoff milkshake" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Vanilla biscoff milkshake</h4>
-                                    <p class="text-xs text-gray-500">Vanilla biscoff milkshake</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$45</span>
-                                <button onclick="addToCart('Vanilla biscoff milkshake', 45)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=150&q=80" alt="Butella milkshake" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Butella milkshake</h4>
-                                    <p class="text-xs text-gray-500">Nutella milkshake</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$45</span>
-                                <button onclick="addToCart('Butella milkshake', 45)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=150&q=80" alt="Brownie milkshake" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Brownie milkshake</h4>
-                                    <p class="text-xs text-gray-500">Chocolate brownie milkshake</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$45</span>
-                                <button onclick="addToCart('Brownie milkshake', 45)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=150&q=80" alt="Vanilla milkshake" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Vanilla milkshake</h4>
-                                    <p class="text-xs text-gray-500">Classic vanilla milkshake</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$45</span>
-                                <button onclick="addToCart('Vanilla milkshake', 45)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=150&q=80" alt="Strawberry milkshake" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Strawberry milkshake</h4>
-                                    <p class="text-xs text-gray-500">Strawberry milkshake</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$45</span>
-                                <button onclick="addToCart('Strawberry milkshake', 45)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <!-- Beverages -->
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1543253687-c931c8e01820?auto=format&fit=crop&w=150&q=80" alt="Pure water" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Pure water</h4>
-                                    <p class="text-xs text-gray-500">Bottled mineral water</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$10</span>
-                                <button onclick="addToCart('Pure water', 10)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=150&q=80" alt="7up" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">7up</h4>
-                                    <p class="text-xs text-gray-500">Chilled canned citrus soft drink</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$10</span>
-                                <button onclick="addToCart('7up', 10)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1629203851122-3726ecdf080e?auto=format&fit=crop&w=150&q=80" alt="Pepsi" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Pepsi</h4>
-                                    <p class="text-xs text-gray-500">Chilled canned refreshing cola</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$10</span>
-                                <button onclick="addToCart('Pepsi', 10)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=150&q=80" alt="Hot masala tea" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Hot masala tea</h4>
-                                    <p class="text-xs text-gray-500">Traditional spiced hot milk tea</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$20</span>
-                                <button onclick="addToCart('Hot masala tea', 20)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add</span></button>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="sidesGrid"></div>
                 </div>
 
             </div>
         </div>
 
-        <!-- Cart Sidebar (1 Column) -->
+        <!-- Cart Sidebar -->
         <div class="lg:col-span-1">
             <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-5 sticky top-24">
                 <h3 class="text-lg font-bold text-gray-900 border-b border-gray-100 pb-3 mb-4 flex items-center justify-between">
@@ -1331,12 +202,10 @@
                     <span id="cartCountBadge" class="bg-brand text-white text-xs px-2 py-0.5 rounded-full font-bold">0</span>
                 </h3>
 
-                <!-- Cart Items List -->
                 <div id="cartItems" class="space-y-3 max-h-64 overflow-y-auto mb-4 pr-1">
                     <p id="emptyCartMessage" class="text-gray-400 text-xs text-center py-6 italic">Your cart is currently empty. Add delicious items from the menu!</p>
                 </div>
 
-                <!-- Cutlery Preference Selection -->
                 <div class="border-t border-gray-100 pt-3 mb-3">
                     <label class="block text-xs font-semibold text-gray-700 mb-1.5"><i class="fa-solid fa-utensils mr-1"></i> Cutlery Request</label>
                     <select id="cutleryPreference" class="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-brand">
@@ -1345,7 +214,6 @@
                     </select>
                 </div>
 
-                <!-- Cart Total -->
                 <div class="border-t border-gray-100 pt-3 mb-4 space-y-2">
                     <div class="flex justify-between text-sm font-medium text-gray-600">
                         <span>Subtotal</span>
@@ -1357,7 +225,6 @@
                     </div>
                 </div>
 
-                <!-- Customer Details Form -->
                 <div class="space-y-3 mb-4">
                     <div>
                         <label class="block text-xs font-semibold text-gray-700 mb-1">Your Name</label>
@@ -1369,7 +236,6 @@
                     </div>
                 </div>
 
-                <!-- Checkout WhatsApp Button -->
                 <button onclick="checkoutWhatsApp()" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-xl text-sm shadow-md transition flex items-center justify-center space-x-2">
                     <i class="fa-brands fa-whatsapp text-lg"></i>
                     <span>Order via WhatsApp</span>
@@ -1379,6 +245,138 @@
         </div>
 
     </main>
+
+    <!-- CUSTOMIZATION MODAL -->
+    <div id="customizerModal" class="fixed inset-0 bg-black/60 z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl flex flex-col">
+            <!-- Modal Header -->
+            <div class="p-4 border-b border-gray-100 flex items-center justify-between sticky top-0 bg-white z-10">
+                <div class="flex items-center space-x-3">
+                    <img id="modalItemImg" src="" alt="" class="w-12 h-12 rounded-lg object-cover">
+                    <div>
+                        <h3 id="modalItemName" class="font-extrabold text-gray-900 text-base">Item Name</h3>
+                        <p class="text-xs text-brand font-bold" id="modalItemPrice">$0</p>
+                    </div>
+                </div>
+                <button onclick="closeCustomizer()" class="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 flex items-center justify-center font-bold">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Modal Body Options -->
+            <div class="p-6 space-y-6 flex-grow">
+                
+                <!-- Choose Your Drink (Required) -->
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center border-b pb-1">
+                        <h4 class="font-bold text-sm text-gray-900">Choose Your Drink</h4>
+                        <span class="text-[10px] bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-bold">Required</span>
+                    </div>
+                    <div class="space-y-2 text-xs">
+                        <label class="flex items-center justify-between p-2 rounded-lg hover:bg-gray-50 border cursor-pointer">
+                            <span class="flex items-center gap-2"><input type="radio" name="drinkOption" value="7UP" checked class="text-brand focus:ring-brand"> 7UP (Popular)</span>
+                            <span class="text-gray-400">Included</span>
+                        </label>
+                        <label class="flex items-center justify-between p-2 rounded-lg hover:bg-gray-50 border cursor-pointer">
+                            <span class="flex items-center gap-2"><input type="radio" name="drinkOption" value="Soda water can" class="text-brand focus:ring-brand"> Soda water can</span>
+                            <span class="text-gray-400">Included</span>
+                        </label>
+                        <label class="flex items-center justify-between p-2 rounded-lg hover:bg-gray-50 border cursor-pointer">
+                            <span class="flex items-center gap-2"><input type="radio" name="drinkOption" value="PEPSI ZERO" class="text-brand focus:ring-brand"> PEPSI ZERO</span>
+                            <span class="text-gray-400">Included</span>
+                        </label>
+                        <label class="flex items-center justify-between p-2 rounded-lg hover:bg-gray-50 border cursor-pointer">
+                            <span class="flex items-center gap-2"><input type="radio" name="drinkOption" value="Pepsi" class="text-brand focus:ring-brand"> Pepsi</span>
+                            <span class="text-gray-400">Included</span>
+                        </label>
+                        <label class="flex items-center justify-between p-2 rounded-lg hover:bg-gray-50 border cursor-pointer">
+                            <span class="flex items-center gap-2"><input type="radio" name="drinkOption" value="Water" class="text-brand focus:ring-brand"> Water</span>
+                            <span class="text-gray-400">Included</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Modify Your Meal -->
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center border-b pb-1">
+                        <h4 class="font-bold text-sm text-gray-900">Modify Your Meal</h4>
+                        <span class="text-[10px] text-gray-400 font-semibold">Optional</span>
+                    </div>
+                    <div class="space-y-2 text-xs">
+                        <label class="flex items-center justify-between p-2 rounded-lg hover:bg-gray-50 border cursor-pointer">
+                            <span class="flex items-center gap-2"><input type="checkbox" name="modifier" value="Cut Into Half" class="rounded text-brand focus:ring-brand"> Cut Into Half (Popular)</span>
+                        </label>
+                        <label class="flex items-center justify-between p-2 rounded-lg hover:bg-gray-50 border cursor-pointer">
+                            <span class="flex items-center gap-2"><input type="checkbox" name="modifier" value="No Onion" class="rounded text-brand focus:ring-brand"> No Onion</span>
+                        </label>
+                        <label class="flex items-center justify-between p-2 rounded-lg hover:bg-gray-50 border cursor-pointer">
+                            <span class="flex items-center gap-2"><input type="checkbox" name="modifier" value="No Tomato" class="rounded text-brand focus:ring-brand"> No Tomato</span>
+                        </label>
+                        <label class="flex items-center justify-between p-2 rounded-lg hover:bg-gray-50 border cursor-pointer">
+                            <span class="flex items-center gap-2"><input type="checkbox" name="modifier" value="No Lettuce" class="rounded text-brand focus:ring-brand"> No Lettuce</span>
+                        </label>
+                        <label class="flex items-center justify-between p-2 rounded-lg hover:bg-gray-50 border cursor-pointer">
+                            <span class="flex items-center gap-2"><input type="checkbox" name="modifier" value="No Salad" class="rounded text-brand focus:ring-brand"> No Salad</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Extra Add-ons -->
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center border-b pb-1">
+                        <h4 class="font-bold text-sm text-gray-900">Extra Add-ons</h4>
+                        <span class="text-[10px] text-gray-400 font-semibold">Optional</span>
+                    </div>
+                    <div class="space-y-2 text-xs">
+                        <label class="flex items-center justify-between p-2 rounded-lg hover:bg-gray-50 border cursor-pointer">
+                            <span class="flex items-center gap-2"><input type="checkbox" name="extra" value="Extra Roast Lamb" data-price="45" class="rounded text-brand focus:ring-brand modal-extra"> Extra Roast Lamb</span>
+                            <span class="font-bold text-brand">+$45.00</span>
+                        </label>
+                        <label class="flex items-center justify-between p-2 rounded-lg hover:bg-gray-50 border cursor-pointer">
+                            <span class="flex items-center gap-2"><input type="checkbox" name="extra" value="Extra Roast Beef" data-price="40" class="rounded text-brand focus:ring-brand modal-extra"> Extra Roast Beef</span>
+                            <span class="font-bold text-brand">+$40.00</span>
+                        </label>
+                        <label class="flex items-center justify-between p-2 rounded-lg hover:bg-gray-50 border cursor-pointer">
+                            <span class="flex items-center gap-2"><input type="checkbox" name="extra" value="Extra Mozzarella Cheese" data-price="25" class="rounded text-brand focus:ring-brand modal-extra"> Extra Mozzarella Cheese</span>
+                            <span class="font-bold text-brand">+$25.00</span>
+                        </label>
+                        <label class="flex items-center justify-between p-2 rounded-lg hover:bg-gray-50 border cursor-pointer">
+                            <span class="flex items-center gap-2"><input type="checkbox" name="extra" value="Extra Roast Chicken" data-price="30" class="rounded text-brand focus:ring-brand modal-extra"> Extra Roast Chicken</span>
+                            <span class="font-bold text-brand">+$30.00</span>
+                        </label>
+                        <label class="flex items-center justify-between p-2 rounded-lg hover:bg-gray-50 border cursor-pointer">
+                            <span class="flex items-center gap-2"><input type="checkbox" name="extra" value="Extra Chicken Tikka" data-price="30" class="rounded text-brand focus:ring-brand modal-extra"> Extra Chicken Tikka</span>
+                            <span class="font-bold text-brand">+$30.00</span>
+                        </label>
+                        <label class="flex items-center justify-between p-2 rounded-lg hover:bg-gray-50 border cursor-pointer">
+                            <span class="flex items-center gap-2"><input type="checkbox" name="extra" value="Extra Halloumi Cheese" data-price="25" class="rounded text-brand focus:ring-brand modal-extra"> Extra Halloumi Cheese</span>
+                            <span class="font-bold text-brand">+$25.00</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Special Request -->
+                <div class="space-y-2">
+                    <label class="block font-bold text-sm text-gray-900">Special Request</label>
+                    <textarea id="modalSpecialRequest" placeholder="We will notify the store of your request. E.g., extra spicy sauce please." class="w-full p-2.5 bg-gray-50 border border-gray-200 rounded-lg text-xs focus:ring-2 focus:ring-brand focus:outline-none" rows="2" maxlength="70"></textarea>
+                </div>
+
+            </div>
+
+            <!-- Modal Footer Controls -->
+            <div class="p-4 border-t border-gray-100 bg-gray-50 flex items-center justify-between sticky bottom-0 rounded-b-2xl">
+                <div class="flex items-center space-x-3 bg-white px-3 py-1.5 rounded-xl border">
+                    <button onclick="adjustModalQty(-1)" class="w-7 h-7 bg-gray-100 hover:bg-gray-200 rounded font-bold text-gray-700 flex items-center justify-center">-</button>
+                    <span id="modalQty" class="font-bold text-sm text-gray-900 w-4 text-center">1</span>
+                    <button onclick="adjustModalQty(1)" class="w-7 h-7 bg-gray-100 hover:bg-gray-200 rounded font-bold text-gray-700 flex items-center justify-center">+</button>
+                </div>
+                <button onclick="confirmAddToCart()" class="bg-brand hover:bg-brand-dark text-white font-bold px-6 py-3 rounded-xl text-sm shadow-md transition flex-1 ml-4 flex items-center justify-between">
+                    <span>Add to Cart</span>
+                    <span id="modalTotalPrice">$0</span>
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="bg-gray-900 text-white py-6 mt-12 border-t border-gray-800">
@@ -1390,9 +388,8 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Interactive Cart, Filters, & Live Store Hours -->
+    <!-- JavaScript Data & Logic -->
     <script>
-        // Check Store Status (10:30 AM to 9:30 PM)
         function checkStoreStatus() {
             const now = new Date();
             const currentHour = now.getHours();
@@ -1413,141 +410,230 @@
         }
         checkStoreStatus();
 
+        // Complete Menu Dataset
+        const menuData = {
+            rolls: [
+                {name: "Lamb Roll", price: 89, desc: "Delicious wrap filled with seasoned lamb", img: "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=150&q=80"},
+                {name: "Zinger roll", price: 59, desc: "Crispy zinger chicken wrap", img: "https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?auto=format&fit=crop&w=150&q=80"},
+                {name: "Beef Roll", price: 79, desc: "Savory beef wrap", img: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=150&q=80"},
+                {name: "Chicken tikka roll", price: 70, desc: "Tandoori chicken tikka wrap", img: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=150&q=80"},
+                {name: "Chicken doner roll", price: 75, desc: "Seasoned chicken donner wrap", img: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=150&q=80"},
+                {name: "mixed donner roll", price: 89, desc: "Combination of chicken and beef donner", img: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=150&q=80"},
+                {name: "Halloumi Cheese Roll", price: 60, desc: "Grilled halloumi wrap", img: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=150&q=80"},
+                {name: "Chapli Bun kebab", price: 60, desc: "Spicy beef chapli patty in a bun", img: "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?auto=format&fit=crop&w=150&q=80"},
+                {name: "gola bun kebab", price: 55, desc: "Tender gola kebab in a bun", img: "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=150&q=80"},
+                {name: "Shami bun kebab", price: 50, desc: "Classic shami patty in a bun", img: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=150&q=80"},
+                {name: "Zinger bun kebab", price: 65, desc: "Crunchy zinger fillet in a bun", img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=150&q=80"}
+            ],
+            burgers: [
+                {name: "crispy wings (5pcs)", price: 60, desc: "5 pieces of crispy fried wings", img: "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=150&q=80"},
+                {name: "buffalo wings (5pcs)", price: 60, desc: "Tangy spicy buffalo wings", img: "https://images.unsplash.com/photo-1608039829572-78524f79c4c7?auto=format&fit=crop&w=150&q=80"},
+                {name: "H&S Crispy wings combo", price: 55, desc: "Hot and spicy crispy wings combo", img: "https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=150&q=80"},
+                {name: "Chicken Chappli Burger", price: 65, desc: "Chicken chapli burger meal", img: "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?auto=format&fit=crop&w=150&q=80"},
+                {name: "single cheese burger", price: 119, desc: "Smash beef single cheese burger", img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=150&q=80"},
+                {name: "volcano beef burger", price: 135, desc: "Spicy volcano beef burger", img: "https://images.unsplash.com/photo-1583032015865-e39ce237ef69?auto=format&fit=crop&w=150&q=80"},
+                {name: "crisoy chicken burger", price: 89, desc: "Crispy chicken burger", img: "https://images.unsplash.com/photo-1625813506062-0aeb1d7a094b?auto=format&fit=crop&w=150&q=80"},
+                {name: "MAc zinger burger", price: 109, desc: "Double decker mac zinger burger", img: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=150&q=80"},
+                {name: "zinger burger", price: 85, desc: "Classic zinger burger", img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=150&q=80"}
+            ],
+            grills: [
+                {name: "penne with chicken kofta", price: 70, desc: "Penne pasta with chicken meatballs", img: "https://images.unsplash.com/photo-1621996346565-e3d5d6281298?auto=format&fit=crop&w=150&q=80"},
+                {name: "roasted beef penne in tomato sauce", price: 80, desc: "Roasted beef penne in tomato sauce", img: "https://images.unsplash.com/photo-1608897013039-887f21d8c804?auto=format&fit=crop&w=150&q=80"},
+                {name: "roasted chiekn penne in tomato sauce", price: 60, desc: "Roasted chicken penne in tomato sauce", img: "https://images.unsplash.com/photo-1621996346565-e3d5d6281298?auto=format&fit=crop&w=150&q=80"},
+                {name: "chicekn tikka oenne with tomato sauce", price: 60, desc: "Chicken tikka penne with tomato sauce", img: "https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=150&q=80"},
+                {name: "Whole grilled fiosh", price: 95, desc: "Whole grilled fish", img: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=150&q=80"},
+                {name: "chicken gola kebab (4pcs)", price: 45, desc: "4 pieces chicken gola kebab", img: "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=150&q=80"},
+                {name: "Chicken chapli kebabb (4pcs)", price: 35, desc: "4 pieces chicken chapli kebab", img: "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?auto=format&fit=crop&w=150&q=80"},
+                {name: "Chiekcn shami kebab (4pcs)", price: 35, desc: "4 pieces chicken shami kebab", img: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=150&q=80"},
+                {name: "chicken seekh kebab (4pcs)", price: 50, desc: "4 pieces chicken seekh kebab", img: "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=150&q=80"},
+                {name: "Lamb with chips", price: 89, desc: "Lamb with french fries", img: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=150&q=80"},
+                {name: "lamb with rice", price: 89, desc: "Lamb with seasoned rice", img: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=150&q=80"},
+                {name: "beef wirh rice", price: 80, desc: "Beef with seasoned rice", img: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=150&q=80"},
+                {name: "beef with chips", price: 85, desc: "Beef with french fries", img: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=150&q=80"},
+                {name: "chiekn tikka with rice", price: 65, desc: "Chicken tikka with rice", img: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=150&q=80"},
+                {name: "chicken tika with chips", price: 75, desc: "Chicken tikka with chips", img: "https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?auto=format&fit=crop&w=150&q=80"},
+                {name: "Roast chicken withrice", price: 65, desc: "Roast chicken with rice", img: "https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?auto=format&fit=crop&w=150&q=80"},
+                {name: "roast chiekn with chips", price: 75, desc: "Roast chicken with chips", img: "https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=150&q=80"},
+                {name: "Mix beef & chicken with rice", price: 89, desc: "Mixed beef and chicken with rice", img: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=150&q=80"},
+                {name: "Mix beef & chicken with rchips", price: 79, desc: "Mixed beef and chicken with chips", img: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=150&q=80"}
+            ],
+            curries: [
+                {name: "Chiekn kofata(4pcs) curry with rice", price: 70, desc: "Chicken kofta curry with rice", img: "https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=150&q=80"},
+                {name: "Mic beef & chicken curry w/ rice", price: 79, desc: "Mixed beef and chicken curry with rice", img: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=150&q=80"},
+                {name: "Roast beef curry", price: 79, desc: "Roast beef curry", img: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=150&q=80"},
+                {name: "Chicken tikka curry", price: 75, desc: "Chicken tikka curry", img: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=150&q=80"},
+                {name: "Roast chicken curry", price: 75, desc: "Roast chicken curry", img: "https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=150&q=80"},
+                {name: "Lamb salad", price: 85, desc: "Fresh salad with tender lamb", img: "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=150&q=80"},
+                {name: "Beef salad", price: 74, desc: "Fresh salad with seasoned beef", img: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=150&q=80"},
+                {name: "Chicken tika salad", price: 64, desc: "Chicken tikka salad", img: "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=150&q=80"},
+                {name: "Roast chicken salad", price: 64, desc: "Roast chicken salad", img: "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=150&q=80"},
+                {name: "Halloumi chese salad", price: 72, desc: "Halloumi cheese salad", img: "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=150&q=80"},
+                {name: "Garden salad", price: 54, desc: "Fresh garden salad", img: "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=150&q=80"}
+            ],
+            pizzas: [
+                {name: "Chicken tikka pizza", price: 150, desc: "Chicken tikka 12\" pizza", img: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=150&q=80"},
+                {name: "Crown burst cheesy pizza", price: 185, desc: "Crown burst cheesy 12\" pizza", img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=150&q=80"},
+                {name: "Garlic chicken pizza", price: 139, desc: "Garlic chicken 12\" pizza", img: "https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?auto=format&fit=crop&w=150&q=80"},
+                {name: "Mixed special pizza", price: 169, desc: "Mixed special 12\" pizza", img: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=150&q=80"},
+                {name: "Cheeses stuffed peoporni pizza", price: 179, desc: "Cheese stuffed pepperoni 12\" pizza", img: "https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=150&q=80"},
+                {name: "Vegetarian pizza", price: 139, desc: "Fresh vegetable 12\" pizza", img: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=150&q=80"},
+                {name: "Margherita pizza", price: 119, desc: "Classic margherita 12\" pizza", img: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=150&q=80"}
+            ],
+            sides: [
+                {name: "Zinger fries", price: 65, desc: "Spicy zinger fries", img: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=150&q=80"},
+                {name: "Chicken strips (6pcs)", price: 55, desc: "6 pieces chicken breast strips", img: "https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=150&q=80"},
+                {name: "Hot chilli sauce extra", price: 10, desc: "Extra hot chilli sauce", img: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=150&q=80"},
+                {name: "Garlic sauce extra", price: 10, desc: "Extra garlic sauce", img: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=150&q=80"},
+                {name: "Fresh mint sauce extra", price: 10, desc: "Extra fresh mint sauce", img: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=150&q=80"},
+                {name: "Chicken samosa (3pcs)", price: 35, desc: "3 pieces chicken samosa", img: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=150&q=80"},
+                {name: "Mozzarella sticks ( 5pcs)", price: 54, desc: "5 pieces mozzarella sticks", img: "https://images.unsplash.com/photo-1548340748-6d2b7d7da28e?auto=format&fit=crop&w=150&q=80"},
+                {name: "Samosa veg (3pcs)", price: 35, desc: "3 pieces vegetable samosa", img: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=150&q=80"},
+                {name: "Chips", price: 32, desc: "French fries", img: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=150&q=80"},
+                {name: "Brownie", price: 39, desc: "Chocolate fudge brownie", img: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=150&q=80"},
+                {name: "Classic tiramisu", price: 50, desc: "Classic tiramisu dessert", img: "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=150&q=80"},
+                {name: "Pistachio tiramisu", price: 50, desc: "Pistachio tiramisu dessert", img: "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=150&q=80"},
+                {name: "Baklava (2pcs)", price: 35, desc: "2 pieces baklava pastry", img: "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=150&q=80"},
+                {name: "Pistachio mint milk shake", price: 45, desc: "Pistachio mint milkshake", img: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=150&q=80"},
+                {name: "Vanilla biscoff milkshake", price: 45, desc: "Vanilla biscoff milkshake", img: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=150&q=80"},
+                {name: "Butella milkshake", price: 45, desc: "Nutella milkshake", img: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=150&q=80"},
+                {name: "Brownie milkshake", price: 45, desc: "Chocolate brownie milkshake", img: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=150&q=80"},
+                {name: "Vanilla milkshake", price: 45, desc: "Classic vanilla milkshake", img: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=150&q=80"},
+                {name: "Strawberry milkshake", price: 45, desc: "Strawberry milkshake", img: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=150&q=80"},
+                {name: "Pure water", price: 10, desc: "Bottled mineral water", img: "https://images.unsplash.com/photo-1543253687-c931c8e01820?auto=format&fit=crop&w=150&q=80"},
+                {name: "7up", price: 10, desc: "Chilled canned citrus soft drink", img: "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=150&q=80"},
+                {name: "Pepsi", price: 10, desc: "Chilled canned refreshing cola", img: "https://images.unsplash.com/photo-1629203851122-3726ecdf080e?auto=format&fit=crop&w=150&q=80"},
+                {name: "Hot masala tea", price: 20, desc: "Traditional spiced hot milk tea", img: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=150&q=80"}
+            ]
+        };
+
+        // Render Menu Items Dynamically
+        function renderMenu() {
+            for (const [catKey, items] of Object.entries(menuData)) {
+                const container = document.getElementById(catKey + 'Grid');
+                if (!container) continue;
+                let html = '';
+                items.forEach(item => {
+                    html += `
+                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
+                            <div class="flex gap-3 mb-2">
+                                <img src="${item.img}" alt="${item.name}" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
+                                <div>
+                                    <h4 class="font-bold text-sm text-gray-900 item-name">${item.name}</h4>
+                                    <p class="text-xs text-gray-500">${item.desc}</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
+                                <span class="font-extrabold text-brand text-base">$${item.price}</span>
+                                <button onclick="openCustomizer('${item.name.replace(/'/g, "\\'")}', ${item.price}, '${item.img}')" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1">
+                                    <i class="fa-solid fa-plus"></i><span>Add</span>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                });
+                container.innerHTML = html;
+            }
+        }
+        renderMenu();
+
+        // Customizer Modal Logic
+        let activeItem = null;
+        let currentModalQty = 1;
+
+        function openCustomizer(name, price, img) {
+            activeItem = { name, basePrice: price, img };
+            currentModalQty = 1;
+            document.getElementById('modalItemName').innerText = name;
+            document.getElementById('modalItemPrice').innerText = '$' + price;
+            document.getElementById('modalItemImg').src = img;
+            document.getElementById('modalQty').innerText = 1;
+            document.getElementById('modalSpecialRequest').value = '';
+
+            // Reset checkboxes/radios
+            document.querySelectorAll('input[name="drinkOption"][value="7UP"]').forEach(el => el.checked = true);
+            document.querySelectorAll('input[name="modifier"]').forEach(el => el.checked = false);
+            document.querySelectorAll('input[name="extra"]').forEach(el => el.checked = false);
+
+            calculateModalTotal();
+            document.getElementById('customizerModal').classList.remove('hidden');
+        }
+
+        function closeCustomizer() {
+            document.getElementById('customizerModal').classList.add('hidden');
+            activeItem = null;
+        }
+
+        function adjustModalQty(change) {
+            currentModalQty += change;
+            if (currentModalQty < 1) currentModalQty = 1;
+            document.getElementById('modalQty').innerText = currentModalQty;
+            calculateModalTotal();
+        }
+
+        // Listen to extra changes to recalc modal total
+        document.querySelectorAll('.modal-extra, input[name="drinkOption"], input[name="modifier"]').forEach(el => {
+            el.addEventListener('change', calculateModalTotal);
+        });
+
+        function calculateModalTotal() {
+            if (!activeItem) return;
+            let unitPrice = activeItem.basePrice;
+            document.querySelectorAll('.modal-extra:checked').forEach(chk => {
+                unitPrice += parseFloat(chk.getAttribute('data-price') || 0);
+            });
+            let total = unitPrice * currentModalQty;
+            document.getElementById('modalTotalPrice').innerText = '$' + total;
+        }
+
+        // Live calculate listener on extra checkbox change
+        document.addEventListener('change', function(e) {
+            if (e.target.classList.contains('modal-extra')) {
+                calculateModalTotal();
+            }
+        });
+
         let cart = [];
 
-        function addToCart(name, price) {
-            const existingItem = cart.find(item => item.name === name);
-            if (existingItem) {
-                existingItem.qty += 1;
-            } else {
-                cart.push({ name, price, qty: 1 });
-            }
-            updateCartUI();
-        }
+        function confirmAddToCart() {
+            if (!activeItem) return;
 
-        function updateQuantity(name, change) {
-            const item = cart.find(item => item.name === name);
-            if (item) {
-                item.qty += change;
-                if (item.qty <= 0) {
-                    cart = cart.filter(cartItem => cartItem.name !== name);
-                }
-            }
-            updateCartUI();
-        }
-
-        function updateCartUI() {
-            const cartItemsEl = document.getElementById('cartItems');
-            const cartCountBadge = document.getElementById('cartCountBadge');
-            const cartSubtotal = document.getElementById('cartSubtotal');
-            const cartTotal = document.getElementById('cartTotal');
-            const cutlerySelect = document.getElementById('cutleryPreference').value;
-
-            cartCountBadge.innerText = cart.reduce((sum, item) => sum + item.qty, 0);
-
-            if (cart.length === 0) {
-                cartItemsEl.innerHTML = '<p id="emptyCartMessage" class="text-gray-400 text-xs text-center py-6 italic">Your cart is currently empty. Add delicious items from the menu!</p>';
-                cartSubtotal.innerText = '$0';
-                cartTotal.innerText = '$0';
-                return;
-            }
-
-            let html = '';
-            let subtotal = 0;
-
-            cart.forEach(item => {
-                const itemTotal = item.price * item.qty;
-                subtotal += itemTotal;
-                html += `
-                    <div class="flex items-center justify-between bg-gray-50 p-2 rounded-lg border border-gray-100 text-xs">
-                        <div class="flex-1 pr-2">
-                            <p class="font-bold text-gray-900">${item.name}</p>
-                            <p class="text-gray-500">$${item.price} x ${item.qty}</p>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <button onclick="updateQuantity('${item.name}', -1)" class="w-6 h-6 bg-gray-200 hover:bg-gray-300 rounded font-bold text-gray-700 flex items-center justify-center">-</button>
-                            <span class="font-bold text-gray-800">${item.qty}</span>
-                            <button onclick="updateQuantity('${item.name}', 1)" class="w-6 h-6 bg-gray-200 hover:bg-gray-300 rounded font-bold text-gray-700 flex items-center justify-center">+</button>
-                        </div>
-                    </div>
-                `;
-            });
-
-            let cutleryFee = (cutlerySelect === 'Need cutlery') ? 1 : 0;
-            let finalTotal = subtotal + cutleryFee;
-
-            cartItemsEl.innerHTML = html;
-            cartSubtotal.innerText = '$' + subtotal;
-            cartTotal.innerText = '$' + finalTotal;
-        }
-
-        document.getElementById('cutleryPreference').addEventListener('change', updateCartUI);
-
-        function filterCategory(category) {
-            document.querySelectorAll('.cat-btn').forEach(btn => {
-                btn.classList.remove('active', 'bg-brand', 'text-white');
-                btn.classList.add('bg-gray-100', 'text-gray-600');
-            });
-            event.target.classList.remove('bg-gray-100', 'text-gray-600');
-            event.target.classList.add('active', 'bg-brand', 'text-white');
-
-            const categories = document.querySelectorAll('.menu-category');
-            categories.forEach(cat => {
-                if (category === 'all' || cat.getAttribute('data-category') === category) {
-                    cat.style.display = 'block';
-                } else {
-                    cat.style.display = 'none';
-                }
-            });
-        }
-
-        function filterMenu() {
-            const query = document.getElementById('searchInput').value.toLowerCase();
-            const items = document.querySelectorAll('.menu-item');
+            const selectedDrink = document.querySelector('input[name="drinkOption"]:checked')?.value || 'None';
             
-            items.forEach(item => {
-                const name = item.querySelector('.item-name').innerText.toLowerCase();
-                if (name.includes(query)) {
-                    item.style.display = 'flex';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        }
+            let modifiers = [];
+            document.querySelectorAll('input[name="modifier"]:checked').forEach(chk => modifiers.push(chk.value));
 
-        function checkoutWhatsApp() {
-            if (cart.length === 0) {
-                alert('Please add items to your cart before ordering.');
-                return;
+            let extras = [];
+            let extraCostTotal = 0;
+            document.querySelectorAll('input[name="extra"]:checked').forEach(chk => {
+                extras.push(chk.value);
+                extraCostTotal += parseFloat(chk.getAttribute('data-price') || 0);
+            });
+
+            const specialReq = document.getElementById('modalSpecialRequest').value.trim();
+
+            let unitPrice = activeItem.basePrice + extraCostTotal;
+
+            // Generate unique signature for cart grouping based on custom options
+            let customDetails = [];
+            if (selectedDrink) customDetails.push(`Drink: ${selectedDrink}`);
+            if (modifiers.length > 0) customDetails.push(...modifiers);
+            if (extras.length > 0) customDetails.push(...extras);
+            if (specialReq) customDetails.push(`Note: ${specialReq}`);
+
+            let cartKey = activeItem.name + ' (' + customDetails.join(', ') + ')';
+
+            const existing = cart.find(item => item.cartKey === cartKey);
+            if (existing) {
+                existing.qty += currentModalQty;
+            } else {
+                cart.push({
+                    name: activeItem.name,
+                    cartKey: cartKey,
+                    price: unitPrice,
+                    qty: currentModalQty,
+                    details: customDetails
+                });
             }
 
-            const name = document.getElementById('customerName').value.trim();
-            const notes = document.getElementById('customerNotes').value.trim();
-            const cutlerySelect = document.getElementById('cutleryPreference').value;
-
-            let message = `Hello Taka Tak Grill! I would like to place a pickup order:\n\n`;
-            if (name) message += `*Customer Name:* ${name}\n`;
-            if (notes) message += `*Notes:* ${notes}\n`;
-            message += `*Cutlery:* ${cutlerySelect}\n`;
-            message += `------------------\n`;
-
-            let subtotal = 0;
-            cart.forEach(item => {
-                message += `• ${item.name} x ${item.qty} ($${item.price * item.qty})\n`;
-                subtotal += item.price * item.qty;
-            });
-
-            let cutleryFee = (cutlerySelect === 'Need cutlery') ? 1 : 0;
-            let finalTotal = subtotal + cutleryFee;
-
-            message += `------------------\n`;
-            if (cutleryFee > 0) message += `Cutlery Fee: $1\n`;
-            message += `*Total Amount:* $${finalTotal}\n`;
-            message += `Please confirm my order for pickup at WORKSHOP 11 7/F BLOCK B VERISTRONG INDUSTRIAL CENTRE NO. 34-36 AU PUI WAN ST NT. Thank you!`;
-
-            const encodedMessage = encodeURIComponent(message);
-            window.open(`https://wa.me/85254407867?text=${encodedMessage}`, '_blank');
-        }
-    </script>
-</body>
-</html>
+            closeCustomizer();
+            update
