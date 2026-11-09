@@ -613,7 +613,7 @@
             if (exclusions.length > 0) details.push(`No: ${exclusions.join(', ')}`);
             if (extras.length > 0) details.push(`Extra: ${extras.join(', ')}`);
 
-            const finalName = `${currentItem.name} (${details.join(' | ')})`;
+            const finalName = `currentItem.name({details.join(' | ')})`;
             const finalPrice = currentItem.price + (extras.length * 10);
 
             const existing = cart.find(item => item.name === finalName);
@@ -672,7 +672,9 @@
                     <div class="flex items-center justify-between bg-gray-50 p-2.5 rounded-lg border border-gray-100 text-xs">
                         <div class="flex-1 pr-2">
                             <p class="font-bold text-gray-900">${item.name}</p>
-                            <p class="text-gray-500">$${item.price} x ${item.qty} = <b>$${itemTotal}</b></p>
+                            <p class="text-gray-500">
+item.pricex$item.qty=<b>
+{itemTotal}</b></p>
                         </div>
                         <div class="flex items-center space-x-1.5">
                             <button onclick="updateQuantity('${item.name.replace(/'/g, "\\'")}', -1)" class="w-6 h-6 bg-gray-200 rounded font-bold">-</button>
@@ -733,7 +735,7 @@
 
             let subtotal = 0;
             cart.forEach(item => {
-                message += `• ${item.name} x ${item.qty} ($${item.price * item.qty})\n`;
+                message += `• ${item.name} x item.qty(${item.price * item.qty})\n`;
                 subtotal += item.price * item.qty;
             });
 
@@ -745,3 +747,5 @@
     </script>
 </body>
 </html>
+
+
