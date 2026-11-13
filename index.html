@@ -1,751 +1,995 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taka Tak Grill - Full Halal Menu & Ordering</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            DEFAULT: '#b91c1c', // Deep Red
-                            dark: '#991b1b',
-                            light: '#ef4444',
-                            accent: '#f59e0b' // Amber/Gold
-                        }
-                    }
-                }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Taka Tak Grill | Menu & Ordering</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#b91c1c',
+              dark: '#991b1b',
+              light: '#ef4444',
+              accent: '#f59e0b'
             }
+          }
         }
-    </script>
+      }
+    };
+  </script>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans antialiased min-h-screen flex flex-col">
 
-    <!-- Top Status & Address Bar -->
-    <div class="bg-gray-900 text-gray-300 text-xs py-2 px-4 border-b border-gray-800">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
-            <div class="flex items-center space-x-2 text-center sm:text-left">
-                <i class="fa-solid fa-location-dot text-brand-accent"></i>
-                <span>WORKSHOP 11 7/F BLOCK B VERISTRONG INDUSTRIAL CENTRE NO. 34-36 AU PUI WAN ST NT</span>
-            </div>
-            <div class="flex items-center space-x-4">
-                <span><i class="fa-regular fa-clock text-brand-accent mr-1"></i> Hours: 10:30 AM - 9:30 PM</span>
-                <span id="storeStatusBadge" class="px-2 py-0.5 rounded font-bold bg-gray-800 text-gray-400">Checking status...</span>
-            </div>
-        </div>
+<body class="min-h-screen flex flex-col bg-gray-50 font-sans text-gray-800 antialiased">
+
+  <!-- Address and hours -->
+  <div class="border-b border-gray-800 bg-gray-900 px-4 py-2 text-xs text-gray-300">
+    <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 sm:flex-row">
+      <div class="flex items-center gap-2 text-center sm:text-left">
+        <i class="fa-solid fa-location-dot text-brand-accent"></i>
+        <span>WORKSHOP 11 7/F BLOCK B VERISTRONG INDUSTRIAL CENTRE NO. 34-36 AU PUI WAN ST NT</span>
+      </div>
+      <span><i class="fa-regular fa-clock mr-1 text-brand-accent"></i> Hours: 10:30 AM – 9:30 PM</span>
     </div>
+  </div>
 
-    <!-- Main Header -->
-    <header class="bg-gradient-to-r from-gray-900 via-brand-dark to-gray-900 text-white shadow-lg sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="flex items-center space-x-3">
-                <div class="bg-brand-accent text-gray-900 p-3 rounded-xl shadow-md text-2xl font-black">
-                    <i class="fa-solid fa-fire-flame-curved"></i>
-                </div>
-                <div>
-                    <h1 class="text-2xl font-extrabold tracking-wider uppercase">Taka Tak Grill</h1>
-                    <p class="text-xs text-gray-300 font-medium">Authentic Halal Cuisine • Pick-up & Delivery</p>
-                </div>
-            </div>
-
-            <div class="flex flex-wrap items-center gap-3">
-                <a href="tel:+85251612730" class="bg-white/10 hover:bg-white/20 px-3 py-2 rounded-lg text-xs font-semibold flex items-center space-x-2 transition">
-                    <i class="fa-solid fa-phone text-brand-accent"></i>
-                    <span>+852 5161 2730</span>
-                </a>
-                <a href="tel:+85254407867" class="bg-white/10 hover:bg-white/20 px-3 py-2 rounded-lg text-xs font-semibold flex items-center space-x-2 transition">
-                    <i class="fa-solid fa-phone text-brand-accent"></i>
-                    <span>+852 5440 7867</span>
-                </a>
-                <div class="flex items-center gap-2 bg-black/30 px-3 py-1.5 rounded-lg border border-white/10 text-xs">
-                    <span class="text-gray-300">Also order on:</span>
-                    <span class="bg-yellow-400 text-black font-bold px-2 py-0.5 rounded text-[10px]">KeeTa</span>
-                    <span class="bg-pink-600 text-white font-bold px-2 py-0.5 rounded text-[10px]">Foodpanda</span>
-                </div>
-            </div>
+  <!-- Header -->
+  <header class="sticky top-0 z-40 bg-gradient-to-r from-gray-900 via-brand-dark to-gray-900 text-white shadow-lg">
+    <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 py-4 sm:px-6 md:flex-row lg:px-8">
+      <div class="flex items-center gap-3">
+        <div class="rounded-xl bg-brand-accent p-3 text-2xl font-black text-gray-900 shadow-md">
+          <i class="fa-solid fa-fire-flame-curved"></i>
         </div>
-    </header>
-
-    <!-- Main Layout -->
-    <main class="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8 flex-grow w-full grid grid-cols-1 lg:grid-cols-3 gap-8">
-        
-        <!-- Menu Section (2 Columns) -->
-        <div class="lg:col-span-2 space-y-6">
-            
-            <!-- Search & Filter Bar -->
-            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col sm:flex-row gap-3 items-center justify-between">
-                <div class="relative w-full sm:w-64">
-                    <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
-                        <i class="fa-solid fa-search"></i>
-                    </span>
-                    <input type="text" id="searchInput" placeholder="Search menu items..." onkeyup="filterMenu()" class="w-full pl-10 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand">
-                </div>
-                <div class="flex overflow-x-auto w-full sm:w-auto gap-2 text-xs font-semibold">
-                    <button onclick="filterCategory('all')" class="cat-btn active px-3 py-1.5 rounded-lg bg-brand text-white whitespace-nowrap">All Items</button>
-                    <button onclick="filterCategory('rolls')" class="cat-btn px-3 py-1.5 rounded-lg bg-gray-100 text-gray-600 whitespace-nowrap">Rolls & Wraps</button>
-                    <button onclick="filterCategory('burgers')" class="cat-btn px-3 py-1.5 rounded-lg bg-gray-100 text-gray-600 whitespace-nowrap">Burgers</button>
-                    <button onclick="filterCategory('pizzas')" class="cat-btn px-3 py-1.5 rounded-lg bg-gray-100 text-gray-600 whitespace-nowrap">Pizzas</button>
-                    <button onclick="filterCategory('grill')" class="cat-btn px-3 py-1.5 rounded-lg bg-gray-100 text-gray-600 whitespace-nowrap">Grill & Pasta</button>
-                    <button onclick="filterCategory('sides')" class="cat-btn px-3 py-1.5 rounded-lg bg-gray-100 text-gray-600 whitespace-nowrap">Sides & Drinks</button>
-                </div>
-            </div>
-
-            <!-- Categories Container -->
-            <div id="menuContainer" class="space-y-8">
-                
-                <!-- STUDENT DISCOUNT CARD -->
-                <div class="menu-category" data-cat="promo">
-                    <h3 class="text-lg font-bold text-gray-900 border-b-2 border-brand pb-2 mb-4">
-                        <i class="fa-solid fa-graduation-cap text-brand mr-2"></i> Student Special
-                    </h3>
-                    <div class="grid grid-cols-1 gap-4">
-                        <div class="menu-item bg-gradient-to-r from-amber-50 to-orange-50 p-5 rounded-xl shadow-sm border border-amber-200 flex flex-col sm:flex-row items-center justify-between gap-4">
-                            <div class="flex gap-4 items-center w-full">
-                                <div class="bg-amber-500 text-white p-4 rounded-xl text-2xl flex-shrink-0"><i class="fa-solid fa-id-card"></i></div>
-                                <div>
-                                    <span class="bg-amber-600 text-white text-[10px] font-extrabold px-2 py-0.5 rounded uppercase">Exclusive Offer</span>
-                                    <h4 class="font-extrabold text-base text-gray-900 item-name mt-1">Student Discount Available</h4>
-                                    <p class="text-xs text-gray-600">Show your valid student ID when picking up your order to enjoy special store discounts!</p>
-                                </div>
-                            </div>
-                            <a href="https://wa.me/85254407867?text=Hi,%20I%20would%20like%20to%20inquire%20about%20the%20Student%20Discount!" target="_blank" class="w-full sm:w-auto bg-green-600 hover:bg-green-700 text-white px-5 py-2.5 rounded-xl text-xs font-bold transition flex items-center justify-center space-x-2 shadow flex-shrink-0">
-                                <i class="fa-brands fa-whatsapp"></i><span>Inquire via WhatsApp</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 1. ROLLS -->
-                <div class="menu-category" data-cat="rolls">
-                    <h3 class="text-lg font-bold text-gray-900 border-b-2 border-brand pb-2 mb-4">
-                        <i class="fa-solid fa-bowl-food text-brand mr-2"></i> Shawarma Donner Rolls
-                    </h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <!-- Lamb Roll -->
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://www.feastingathome.com/wp-content/uploads/2020/09/Turkish-Lamb-Wrap_-10.jpg" alt="Lamb Roll" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Lamb Roll</h4>
-                                    <p class="text-xs text-gray-500">Delicious wrap filled with seasoned lamb</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$89</span>
-                                <button onclick="openCustomizer('Lamb Roll', 89, true)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Customize & Add</span></button>
-                            </div>
-                        </div>
-
-                        <!-- Zinger Roll -->
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFXqJPuNS1QjAmiGEYWbmi6Z9reUZzHQ2QmjY6xenYwQ&s=10" alt="Zinger roll" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Zinger roll</h4>
-                                    <p class="text-xs text-gray-500">Crispy zinger chicken wrap</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$59</span>
-                                <button onclick="openCustomizer('Zinger roll', 59, true)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Customize & Add</span></button>
-                            </div>
-                        </div>
-
-                        <!-- Beef Roll -->
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5WT2Bk79IdplDW1REeDX1FWHIz8aFg5Cuome3noNyhw&s=10" alt="Beef Roll" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Beef Roll</h4>
-                                    <p class="text-xs text-gray-500">Delicious wrap filled with Beef</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$79</span>
-                                <button onclick="openCustomizer('Beef Roll', 79, true)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Customize & Add</span></button>
-                            </div>
-                        </div>
-
-                        <!-- Chicken Tikka Roll -->
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKMypt9V4gyZP0TWmNJdvhIc7x86yrVmVsvvIkyKAKzA&s=10" alt="Chicken tikka roll" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Chicken tikka roll</h4>
-                                    <p class="text-xs text-gray-500">Filled with chicken tikka </p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$70</span>
-                                <button onclick="openCustomizer('Chicken tikka roll', 70, true)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Customize & Add</span></button>
-                            </div>
-                        </div>
-
-                        <!-- Chicken Doner Roll -->
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAQFtadMd7N038ue44TaMvGv99I91-TR_9IQkvGr8Dxg&s=10" alt="Chicken doner roll" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Chicken doner roll</h4>
-                                    <p class="text-xs text-gray-500">Seasoned chicken donner wrap</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$75</span>
-                                <button onclick="openCustomizer('Chicken doner roll', 75, true)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Customize & Add</span></button>
-                            </div>
-                        </div>
-
-                        <!-- Mixed Donner Roll -->
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuawlIzpyyOQH1W0vUQIvLqBUuBYbQrYPrAaKaMGF4dQ&s=10" alt="mixed donner roll" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">mixed donner roll</h4>
-                                    <p class="text-xs text-gray-500">Chicken and Beef donner</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$89</span>
-                                <button onclick="openCustomizer('mixed donner roll', 89, true)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Customize & Add</span></button>
-                            </div>
-                        </div>
-
-                        <!-- Halloumi Cheese Roll -->
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGtFl17IBDqjGqU0pdlTkZ_Xvy6-X8m8IbLBGTcvtIC0JgpicfN9BrQwWQ&s=10" alt="Halloumi Cheese Roll" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Halloumi Cheese Roll</h4>
-                                    <p class="text-xs text-gray-500">Grilled halloumi wrap</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$60</span>
-                                <button onclick="openCustomizer('Halloumi Cheese Roll', 60, true)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Customize & Add</span></button>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <!-- 2. BURGERS & FRIED CHICKEN -->
-                <div class="menu-category" data-cat="burgers">
-                    <h3 class="text-lg font-bold text-gray-900 border-b-2 border-brand pb-2 mb-4">
-                        <i class="fa-solid fa-burger text-brand mr-2"></i> Burgers & Fried Chicken
-                    </h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsqP1aCvl6Lp684f45wjHXuOv__7Q68A5qUwaHgAp-HQ&s=10" alt="zinger burger" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">zinger burger</h4>
-                                    <p class="text-xs text-gray-500">Classic crunchy zinger burger</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$85</span>
-                                <button onclick="openCustomizer('zinger burger', 85, true)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Customize & Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSPYII-NnKSj4EKe9Gjo24hI_VCe-IDW-pm4QCiUIBdQ&s=10" alt="volcano beef burger" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">volcano beef burger</h4>
-                                    <p class="text-xs text-gray-500">Spicy volcano beef burger</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$135</span>
-                                <button onclick="openCustomizer('volcano beef burger', 135, true)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Customize & Add</span></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 3. 12" PIZZAS -->
-                <div class="menu-category" data-cat="pizzas">
-                    <h3 class="text-lg font-bold text-gray-900 border-b-2 border-brand pb-2 mb-4">
-                        <i class="fa-solid fa-pizza-slice text-brand mr-2"></i> 12" Pizzas
-                    </h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=150&q=80" alt="Chicken tikka pizza" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Chicken tikka pizza (12")</h4>
-                                    <p class="text-xs text-gray-500">Tandoori chicken tikka pizza</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$150</span>
-                                <button onclick="openCustomizer('Chicken tikka pizza (12\')', 150, true, false)"" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Customize & Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=150&q=80" alt="Pepperoni pizza" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Cheese Stuffed Pepperoni Pizza (12")</h4>
-                                    <p class="text-xs text-gray-500">Stuffed crust pepperoni pizza</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$179</span>
-                                <button onclick="openCustomizer('Cheese Stuffed Pepperoni Pizza (12\&#039;)', 179, true)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Customize & Add</span></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 4. GRILL, BBQ & PASTA -->
-                <div class="menu-category" data-cat="grill">
-                    <h3 class="text-lg font-bold text-gray-900 border-b-2 border-brand pb-2 mb-4">
-                        <i class="fa-solid fa-fire text-brand mr-2"></i> Grill, BBQ & Pasta Platters
-                    </h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=150&q=80" alt="BBQ Chicken Platter" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">BBQ Chicken Grill Platter</h4>
-                                    <p class="text-xs text-gray-500">Assorted charcoal-grilled chicken skewers</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$128</span>
-                                <button onclick="openCustomizer('BBQ Chicken Grill Platter', 128, true)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Customize & Add</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkEug0djuPnjJcPxkd8XnZZ1HIfuHP2tM8OmeLHkAjjw&s=10" alt="Creamy Chicken Pasta" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Creamy Chicken Pasta</h4>
-                                    <p class="text-xs text-gray-500">Rich white sauce pasta with grilled chicken</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$98</span>
-                                <button onclick="openCustomizer('Creamy Chicken Pasta', 98, true)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Customize & Add</span></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 5. SIDES, DRINKS & DESSERTS -->
-                <div class="menu-category" data-cat="sides">
-                    <h3 class="text-lg font-bold text-gray-900 border-b-2 border-brand pb-2 mb-4">
-                        <i class="fa-solid fa-cup-hot text-brand mr-2"></i> Sides, Drinks & Milkshakes
-                    </h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1629203851122-3726ecdf080e?auto=format&fit=crop&w=150&q=80" alt="Pepsi" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Pepsi</h4>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$10</span>
-                                <button onclick="openCustomizer('Pepsi', 10, false)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add to Order</span></button>
-                            </div>
-                        </div>
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6zkQ2R6_EjCTMT6-2sDMY8BZB031SI9Nf5OuxKs-6yA&s=10" alt="7-UP" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">7-UP</h4>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$10</span>
-                                <button onclick="openCustomizer('7UP', 10, false)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add to Order</span></button>
-                            </div>
-                        </div>
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWpXtUu0wJ2RhOtXHvorLLuKIgE0ET6cpvyUj86bM6iA&s" alt="Pepsi Zero Sugar" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Pepsi Zero Sugar</h4>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$10</span>
-                                <button onclick="openCustomizer('7UP', 10, false)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add to Order</span></button>
-                            </div>
-                        </div>
-                        
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRhKV9yboxeyEl5KdOTwWeOfNzcCZD8ePW5uJibAZbJQ&s=10" alt="Masala Tea" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Masala Tea</h4>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$25</span>
-                                <button onclick="openCustomizer('7UP', 10, false)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add to Order</span></button>
-                            </div>
-                        </div>
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8NcMYk8zq7A_qwLnjtUVc3lWxMBwutYO_cMSoo_rWhg&s=10" alt="Tea (Chai)" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Tea (Chai)</h4>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$15</span>
-                                <button onclick="openCustomizer('7UP', 10, false)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add to Order</span></button>
-                            </div>
-                        </div>
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5QbwcVN4aqk2D3TCjyt-n-d6j8lxgH9Oxnw2kmPLYlw&s=10" alt="Pure Water" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Pure Water</h4>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$10</span>
-                                <button onclick="openCustomizer('7UP', 10, false)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add to Order</span></button>
-                            </div>
-                        </div>
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=150&q=80" alt="Chips" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">French Fries / Chips</h4>
-                                    <p class="text-xs text-gray-500">Crispy golden fries</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$32</span>
-                                <button onclick="openCustomizer('French Fries / Chips', 32, false)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add to Order</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1541658016709-82535e94bc69?auto=format&fit=crop&w=150&q=80" alt="Samosa" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Crispy Samosa (2 pcs)</h4>
-                                    <p class="text-xs text-gray-500">Savory fried pastry with spiced filling</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$25</span>
-                                <button onclick="openCustomizer('Crispy Samosa (2 pcs)', 25, false)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add to Order</span></button>
-                            </div>
-                        </div>
-
-                        <div class="menu-item bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between">
-                            <div class="flex gap-3 mb-2">
-                                <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=150&q=80" alt="Milkshake" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-bold text-sm text-gray-900 item-name">Special Milkshake</h4>
-                                    <p class="text-xs text-gray-500">Rich and creamy blended milkshake</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-brand text-base">$45</span>
-                                <button onclick="openCustomizer('Special Milkshake', 45, false)" class="bg-gray-900 hover:bg-brand text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1"><i class="fa-solid fa-plus"></i><span>Add to Order</span></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+        <div>
+          <h1 class="text-2xl font-extrabold uppercase tracking-wider">Taka Tak Grill</h1>
+          <p class="text-xs font-medium text-gray-300">Authentic Halal Cuisine • Pick-up & Delivery</p>
         </div>
+      </div>
 
-        <!-- Cart Sidebar -->
-        <div class="lg:col-span-1">
-            <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-5 sticky top-24">
-                <h3 class="text-lg font-bold text-gray-900 border-b border-gray-100 pb-3 mb-4 flex items-center justify-between">
-                    <span class="flex items-center"><i class="fa-solid fa-basket-shopping text-brand mr-2"></i> Your Order</span>
-                    <span id="cartCountBadge" class="bg-brand text-white text-xs px-2 py-0.5 rounded-full font-bold">0</span>
-                </h3>
-
-                <!-- Cart Items List -->
-                <div id="cartItems" class="space-y-3 max-h-64 overflow-y-auto mb-4 pr-1">
-                    <p id="emptyCartMessage" class="text-gray-400 text-xs text-center py-6 italic">Your cart is empty. Select items to order!</p>
-                </div>
-
-                <!-- Cutlery Preference Selection -->
-                <div class="border-t border-gray-100 pt-3 mb-3">
-                    <label class="block text-xs font-semibold text-gray-700 mb-1.5"><i class="fa-solid fa-utensils mr-1"></i> Cutlery Request</label>
-                    <select id="cutleryPreference" class="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-brand">
-                        <option value="No cutlery required">No cutlery required ($0)</option>
-                        <option value="Need cutlery">Need cutlery (+$1)</option>
-                    </select>
-                </div>
-
-                <!-- Cart Total -->
-                <div class="border-t border-gray-100 pt-3 mb-4 space-y-2">
-                    <div class="flex justify-between text-sm font-medium text-gray-600">
-                        <span>Subtotal</span>
-                        <span id="cartSubtotal">$0</span>
-                    </div>
-                    <div class="flex justify-between text-base font-extrabold text-gray-900">
-                        <span>Total</span>
-                        <span id="cartTotal" class="text-brand">$0</span>
-                    </div>
-                </div>
-
-                <!-- Customer Details Form -->
-                <div class="space-y-3 mb-4">
-                    <div>
-                        <label class="block text-xs font-semibold text-gray-700 mb-1">Your Name</label>
-                        <input type="text" id="customerName" placeholder="Enter your name" class="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-brand">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-gray-700 mb-1">Pickup Time / Notes</label>
-                        <input type="text" id="customerNotes" placeholder="e.g., Pickup in 20 mins" class="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-brand">
-                    </div>
-                </div>
-
-                <!-- Checkout WhatsApp Button -->
-                <button onclick="checkoutWhatsApp()" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-xl text-sm shadow-md transition flex items-center justify-center space-x-2">
-                    <i class="fa-brands fa-whatsapp text-lg"></i>
-                    <span>Order via WhatsApp</span>
-                </button>
-            </div>
+      <div class="flex flex-wrap items-center justify-center gap-3">
+        <a href="tel:+85251612730" class="flex items-center gap-2 rounded-lg bg-white/10 px-3 py-2 text-xs font-semibold transition hover:bg-white/20">
+          <i class="fa-solid fa-phone text-brand-accent"></i>
+          +852 5161 2730
+        </a>
+        <a href="tel:+85254407867" class="flex items-center gap-2 rounded-lg bg-white/10 px-3 py-2 text-xs font-semibold transition hover:bg-white/20">
+          <i class="fa-solid fa-phone text-brand-accent"></i>
+          +852 5440 7867
+        </a>
+        <div class="flex items-center gap-2 rounded-lg border border-white/10 bg-black/30 px-3 py-1.5 text-xs">
+          <span class="text-gray-300">Also order on:</span>
+          <span class="rounded bg-yellow-400 px-2 py-0.5 text-[10px] font-bold text-black">KeeTa</span>
+          <span class="rounded bg-pink-600 px-2 py-0.5 text-[10px] font-bold text-white">Foodpanda</span>
         </div>
-
-    </main>
-
-    <!-- CUSTOMIZATION POPUP MODAL -->
-    <div id="customizerModal" class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 hidden">
-        <div class="bg-white w-full max-w-md rounded-2xl shadow-2xl overflow-hidden p-6 relative">
-            <button onclick="closeCustomizer()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 text-lg"><i class="fa-solid fa-xmark"></i></button>
-            
-            <h3 id="modalItemName" class="text-lg font-extrabold text-gray-900 mb-1">Customize Item</h3>
-            <p id="modalItemPrice" class="text-brand font-bold text-sm mb-4">$0</p>
-
-            <div class="space-y-4 text-xs max-h-80 overflow-y-auto pr-1">
-                <!-- Spice Selection -->
-                <div>
-                    <span class="font-bold text-gray-800 uppercase block mb-1">1. Spice Level</span>
-                    <div class="flex gap-4">
-                        <label class="flex items-center"><input type="radio" name="modalSpice" value="Hot Spicy" class="mr-1.5"> Hot</label>
-                        <label class="flex items-center"><input type="radio" name="modalSpice" value="Spicy" class="mr-1.5"> Spicy</label>
-                        <label class="flex items-center"><input type="radio" name="modalSpice" value="Mild" checked class="mr-1.5"> Mild</label>
-                    </div>
-                </div>
-
-                <!-- Exclusions -->
-                <div>
-                    <span class="font-bold text-gray-800 uppercase block mb-1">2. Exclusions (No)</span>
-                    <div class="grid grid-cols-2 gap-2">
-                        <label class="flex items-center"><input type="checkbox" value="Onion" class="modalExc mr-1.5"> No Onion</label>
-                        <label class="flex items-center"><input type="checkbox" value="Tomato" class="modalExc mr-1.5"> No Tomato</label>
-                        <label class="flex items-center"><input type="checkbox" value="Lettuce" class="modalExc mr-1.5"> No Lettuce</label>
-                        <label class="flex items-center"><input type="checkbox" value="Sauce" class="modalExc mr-1.5"> No Sauce</label>
-                    </div>
-                </div>
-
-                <!-- Extras -->
-                <div>
-                    <span class="font-bold text-gray-800 uppercase block mb-1">3. Extras (+$10 each)</span>
-                    <div class="grid grid-cols-2 gap-2">
-                        <label class="flex items-center"><input type="checkbox" value="Extra Cheese" class="modalExt mr-1.5"> Extra Cheese</label>
-                        <label class="flex items-center"><input type="checkbox" value="Extra Meat" class="modalExt mr-1.5"> Extra Meat</label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mt-6 pt-4 border-t border-gray-100 flex gap-3">
-                <button onclick="closeCustomizer()" class="w-1/2 bg-gray-100 hover:bg-gray-200 text-gray-700 py-2.5 rounded-xl font-bold transition">Cancel</button>
-                <button onclick="confirmCustomizedAdd()" class="w-1/2 bg-brand hover:bg-brand-dark text-white py-2.5 rounded-xl font-bold transition shadow">Add to Order</button>
-            </div>
-        </div>
+      </div>
     </div>
+  </header>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-6 mt-12 border-t border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 text-center space-y-2">
-            <h4 class="font-bold text-base uppercase tracking-wider text-brand-light">Taka Tak Grill</h4>
-            <p class="text-xs text-gray-400">WORKSHOP 11 7/F BLOCK B VERISTRONG INDUSTRIAL CENTRE NO. 34-36 AU PUI WAN ST NT</p>
-            <p class="text-xs text-gray-400">For orders call +852 5161 2730 / +852 5440 7867</p>
-            <p class="text-[10px] text-gray-500">&copy; 2026 Taka Tak Grill. All rights reserved.</p>
+  <main class="mx-auto grid w-full max-w-7xl flex-grow grid-cols-1 gap-8 px-4 py-6 sm:px-6 lg:grid-cols-3 lg:px-8">
+
+    <!-- Menu -->
+    <section class="space-y-6 lg:col-span-2" aria-label="Restaurant menu">
+
+      <!-- Promotion and student discount -->
+      <div class="flex flex-col items-center justify-between gap-3 rounded-2xl border border-amber-200 bg-gradient-to-r from-amber-50 to-orange-50 p-5 sm:flex-row">
+        <div class="flex items-center gap-4">
+          <div class="rounded-xl bg-amber-500 p-4 text-2xl text-white">
+            <i class="fa-solid fa-tags"></i>
+          </div>
+          <div>
+            <p class="text-xs font-extrabold uppercase tracking-wide text-amber-800">Promotion</p>
+            <h2 class="text-xl font-extrabold text-gray-900">Save 10% on menu items</h2>
+            <p class="text-xs text-gray-600">Discounted prices are shown on the menu and applied at checkout.</p>
+            <p class="mt-1 text-xs text-gray-600">Ask us about the student discount when you pick up your order.</p>
+          </div>
         </div>
-    </footer>
 
-    <!-- JavaScript Logic -->
-    <script>
-        let cart = [];
-        let currentItem = { name: '', price: 0 };
+        <a
+          href="https://wa.me/85254407867?text=Hi%2C%20I%20would%20like%20to%20ask%20about%20the%20student%20discount."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center justify-center gap-2 rounded-xl bg-green-600 px-5 py-2.5 text-xs font-bold text-white shadow transition hover:bg-green-700"
+        >
+          <i class="fa-brands fa-whatsapp"></i>
+          Ask about student discount
+        </a>
+      </div>
 
-        function openCustomizer(name, price, allowCustom) {
-            currentItem = { name, price };
-            document.getElementById('modalItemName').innerText = name;
-            document.getElementById('modalItemPrice').innerText = '$' + price;
+      <!-- Search and filters -->
+      <div class="rounded-xl border border-gray-100 bg-white p-4 shadow-sm">
+        <div class="flex flex-col items-center justify-between gap-3 sm:flex-row">
+          <label class="relative w-full sm:w-64">
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </span>
+            <input
+              id="searchInput"
+              type="search"
+              placeholder="Search menu items..."
+              class="w-full rounded-lg border border-gray-200 bg-gray-50 py-2 pl-10 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-brand"
+            >
+          </label>
 
-            document.querySelectorAll('.modalExc, .modalExt').forEach(el => el.checked = false);
-            document.querySelector('input[name="modalSpice"][value="Mild"]').checked = true;
+          <div id="categoryButtons" class="flex w-full gap-2 overflow-x-auto text-xs font-semibold sm:w-auto">
+            <button type="button" data-category="all" class="cat-btn whitespace-nowrap rounded-lg bg-brand px-3 py-1.5 text-white">All Items</button>
+            <button type="button" data-category="meals" class="cat-btn whitespace-nowrap rounded-lg bg-gray-100 px-3 py-1.5 text-gray-600">Meat Lovers</button>
+            <button type="button" data-category="curries" class="cat-btn whitespace-nowrap rounded-lg bg-gray-100 px-3 py-1.5 text-gray-600">Curries</button>
+            <button type="button" data-category="rolls" class="cat-btn whitespace-nowrap rounded-lg bg-gray-100 px-3 py-1.5 text-gray-600">Rolls & Wraps</button>
+            <button type="button" data-category="burgers" class="cat-btn whitespace-nowrap rounded-lg bg-gray-100 px-3 py-1.5 text-gray-600">Burgers</button>
+            <button type="button" data-category="pizzas" class="cat-btn whitespace-nowrap rounded-lg bg-gray-100 px-3 py-1.5 text-gray-600">Pizzas</button>
+            <button type="button" data-category="grill" class="cat-btn whitespace-nowrap rounded-lg bg-gray-100 px-3 py-1.5 text-gray-600">Grill & Pasta</button>
+            <button type="button" data-category="sides" class="cat-btn whitespace-nowrap rounded-lg bg-gray-100 px-3 py-1.5 text-gray-600">Sides</button>
+            <button type="button" data-category="milkshakes" class="cat-btn whitespace-nowrap rounded-lg bg-gray-100 px-3 py-1.5 text-gray-600">Milkshakes</button>
+            <button type="button" data-category="desserts" class="cat-btn whitespace-nowrap rounded-lg bg-gray-100 px-3 py-1.5 text-gray-600">Desserts</button>
+            <button type="button" data-category="drinks" class="cat-btn whitespace-nowrap rounded-lg bg-gray-100 px-3 py-1.5 text-gray-600">Drinks</button>
+          </div>
+        </div>
+      </div>
 
-            if (!allowCustom) {
-                addSimpleItem(name, price);
-            } else {
-                document.getElementById('customizerModal').classList.remove('hidden');
-            }
+      <div id="menuContainer" class="space-y-8"></div>
+
+      <p id="noResults" class="hidden rounded-xl bg-white p-8 text-center text-sm text-gray-500 shadow-sm">
+        No menu items match your search.
+      </p>
+    </section>
+
+    <!-- Cart -->
+    <aside class="lg:col-span-1" aria-label="Your order">
+      <div class="rounded-2xl border border-gray-100 bg-white p-5 shadow-lg lg:sticky lg:top-28">
+        <h2 class="mb-4 flex items-center justify-between border-b border-gray-100 pb-3 text-lg font-bold text-gray-900">
+          <span><i class="fa-solid fa-basket-shopping mr-2 text-brand"></i>Your Order</span>
+          <span id="cartCountBadge" class="rounded-full bg-brand px-2 py-0.5 text-xs font-bold text-white">0</span>
+        </h2>
+
+        <div id="cartItems" class="mb-4 max-h-72 space-y-3 overflow-y-auto pr-1">
+          <p class="py-6 text-center text-xs italic text-gray-400">Your cart is empty. Select items to order!</p>
+        </div>
+
+        <div class="mb-3 border-t border-gray-100 pt-3">
+          <label for="cutleryPreference" class="mb-1.5 block text-xs font-semibold text-gray-700">
+            <i class="fa-solid fa-utensils mr-1"></i>Cutlery request
+          </label>
+          <select id="cutleryPreference" class="w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-brand">
+            <option value="No cutlery required">No cutlery required ($0)</option>
+            <option value="Need cutlery">Need cutlery (+$1)</option>
+          </select>
+        </div>
+
+        <div class="mb-4 space-y-2 border-t border-gray-100 pt-3">
+          <div class="flex justify-between text-sm text-gray-600">
+            <span>Original subtotal</span>
+            <span id="cartOriginalSubtotal">$0.00</span>
+          </div>
+          <div class="flex justify-between text-sm font-semibold text-green-700">
+            <span>10% discount</span>
+            <span id="cartDiscount">−$0.00</span>
+          </div>
+          <div class="flex justify-between text-sm font-medium text-gray-600">
+            <span>Discounted subtotal</span>
+            <span id="cartSubtotal">$0.00</span>
+          </div>
+          <div class="flex justify-between text-base font-extrabold text-gray-900">
+            <span>Total</span>
+            <span id="cartTotal" class="text-brand">$0.00</span>
+          </div>
+        </div>
+
+        <div class="mb-4 space-y-3">
+          <div>
+            <label for="customerName" class="mb-1 block text-xs font-semibold text-gray-700">Your name</label>
+            <input id="customerName" type="text" autocomplete="name" placeholder="Enter your name" class="w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-brand">
+          </div>
+          <div>
+            <label for="customerNotes" class="mb-1 block text-xs font-semibold text-gray-700">Pickup time / notes</label>
+            <input id="customerNotes" type="text" placeholder="e.g., Pickup in 20 mins" class="w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-brand">
+          </div>
+        </div>
+
+        <button id="checkoutButton" type="button" class="flex w-full items-center justify-center gap-2 rounded-xl bg-green-600 px-4 py-3 text-sm font-bold text-white shadow-md transition hover:bg-green-700">
+          <i class="fa-brands fa-whatsapp text-lg"></i>
+          Order via WhatsApp
+        </button>
+      </div>
+    </aside>
+  </main>
+
+  <!-- Customizer -->
+  <div id="customizerModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 p-4" role="dialog" aria-modal="true" aria-labelledby="modalItemName">
+    <div class="relative max-h-[90vh] w-full max-w-md overflow-y-auto rounded-2xl bg-white p-6 shadow-2xl">
+      <button id="closeModalButton" type="button" aria-label="Close customization" class="absolute right-4 top-4 text-lg text-gray-400 hover:text-gray-700">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <h2 id="modalItemName" class="mb-1 pr-8 text-lg font-extrabold text-gray-900">Customize item</h2>
+      <p id="modalItemPrice" class="mb-4 text-sm font-bold text-brand"></p>
+
+      <div id="spiceGroup" class="mb-4 text-xs">
+        <span class="mb-2 block font-bold uppercase text-gray-800">Choose spice level</span>
+        <div class="flex flex-wrap gap-4">
+          <label class="flex items-center"><input type="radio" name="modalSpice" value="Mild" class="mr-1.5">Mild</label>
+          <label class="flex items-center"><input type="radio" name="modalSpice" value="Medium" class="mr-1.5">Medium</label>
+          <label class="flex items-center"><input type="radio" name="modalSpice" value="Spicy" class="mr-1.5">Spicy</label>
+        </div>
+      </div>
+
+      <div id="exclusionsSection" class="mb-4 text-xs">
+        <span class="mb-2 block font-bold uppercase text-gray-800">Exclusions — choose what to leave out</span>
+        <div id="modalExclusions" class="grid grid-cols-2 gap-2"></div>
+      </div>
+
+      <div id="extrasSection" class="mb-4 text-xs">
+        <span class="mb-2 block font-bold uppercase text-gray-800">Extras</span>
+        <div id="modalExtras" class="grid grid-cols-1 gap-2"></div>
+        <p class="mt-2 text-[10px] text-gray-500">Extra meat price needs confirmation; it will not be added to the total yet.</p>
+      </div>
+
+      <div class="mt-6 flex gap-3 border-t border-gray-100 pt-4">
+        <button id="cancelModalButton" type="button" class="w-1/2 rounded-xl bg-gray-100 py-2.5 font-bold text-gray-700 transition hover:bg-gray-200">Cancel</button>
+        <button id="confirmAddButton" type="button" class="w-1/2 rounded-xl bg-brand py-2.5 font-bold text-white shadow transition hover:bg-brand-dark">Add to order</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="mt-12 border-t border-gray-800 bg-gray-900 py-6 text-white">
+    <div class="mx-auto max-w-7xl space-y-2 px-4 text-center">
+      <h2 class="text-base font-bold uppercase tracking-wider text-brand-light">Taka Tak Grill</h2>
+      <p class="text-xs text-gray-400">WORKSHOP 11 7/F BLOCK B VERISTRONG INDUSTRIAL CENTRE NO. 34-36 AU PUI WAN ST NT</p>
+      <p class="text-xs text-gray-400">For orders call +852 5161 2730 / +852 5440 7867</p>
+      <p class="text-[10px] text-gray-500">&copy; 2026 Taka Tak Grill. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const DISCOUNT_RATE = 0.10;
+
+    // Placeholder image for added items. Replace an item's image property
+    // with your own image URL when you have its photo.
+    const COMING_SOON_IMAGE =
+      'data:image/svg+xml;charset=UTF-8,' +
+      encodeURIComponent(`
+        <svg xmlns="http://www.w3.org/2000/svg" width="300" height="220" viewBox="0 0 300 220">
+          <rect width="300" height="220" fill="#f3f4f6"/>
+          <rect x="12" y="12" width="276" height="196" rx="18" fill="#fff" stroke="#d1d5db" stroke-width="3"/>
+          <text x="150" y="100" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#991b1b">Image</text>
+          <text x="150" y="135" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#991b1b">coming soon</text>
+        </svg>
+      `);
+
+    const categories = [
+      { id: 'meals', title: 'Meat Lovers', icon: 'fa-drumstick-bite' },
+      { id: 'curries', title: 'Curries with Rice', icon: 'fa-bowl-food' },
+      { id: 'rolls', title: 'Kebabs / Shawarma', icon: 'fa-bowl-food' },
+      { id: 'burgers', title: 'Burgers & Fried Chicken', icon: 'fa-burger' },
+      { id: 'pizzas', title: '12" Pizzas', icon: 'fa-pizza-slice' },
+      { id: 'grill', title: 'Grill, BBQ & Pasta', icon: 'fa-fire' },
+      { id: 'sides', title: 'Side Orders', icon: 'fa-utensils' },
+      { id: 'milkshakes', title: 'Milkshakes', icon: 'fa-mug-hot' },
+      { id: 'desserts', title: 'Desserts', icon: 'fa-ice-cream' },
+      { id: 'drinks', title: 'Drinks', icon: 'fa-mug-hot' }
+    ];
+
+    /*
+      Original website items retain their original image URLs.
+      New items from the menu pictures use COMING_SOON_IMAGE automatically.
+    */
+    const menuItems = [
+      // Meat Lovers from menu image 1
+      { name: 'Lamb with Chips', price: 95, category: 'meals', custom: 'spice' },
+      { name: 'Lamb with Rice', price: 85, category: 'meals', custom: 'spice' },
+      { name: 'Beef with Rice', price: 70, category: 'meals', custom: 'spice' },
+      { name: 'Beef with Chips', price: 80, category: 'meals', custom: 'spice' },
+      { name: 'Chicken Tikka with Rice', price: 70, category: 'meals', custom: 'spice' },
+      { name: 'Chicken Tikka with Chips', price: 80, category: 'meals', custom: 'spice' },
+      { name: 'Roast Chicken with Rice', price: 70, category: 'meals', custom: 'spice' },
+      { name: 'Roast Chicken with Chips', price: 80, category: 'meals', custom: 'spice' },
+      { name: 'Mix Beef & Chicken with Rice', price: 89, category: 'meals', custom: 'spice' },
+      { name: 'Mix Beef & Chicken with Chips', price: 99, category: 'meals', custom: 'spice' },
+
+      // Curries with Rice from menu image 1
+      { name: 'Chicken Kofta Curry with Rice', price: 65, category: 'curries', custom: 'spice' },
+      { name: 'Mix Beef & Chicken Curry with Rice', price: 75, category: 'curries', custom: 'spice' },
+      { name: 'Roast Beef Curry with Rice', price: 70, category: 'curries', custom: 'spice' },
+      { name: 'Chicken Tikka Curry with Rice', price: 65, category: 'curries', custom: 'spice' },
+      { name: 'Roast Chicken Curry with Rice', price: 65, category: 'curries', custom: 'spice' },
+      { name: 'Roast Lamb Curry with Rice', price: 88, category: 'curries', custom: 'spice' },
+
+      // Original rolls and original image URLs
+      {
+        name: 'Lamb Roll',
+        price: 89,
+        category: 'rolls',
+        custom: 'wrap',
+        description: 'Delicious wrap filled with seasoned lamb',
+        image: 'https://www.feastingathome.com/wp-content/uploads/2020/09/Turkish-Lamb-Wrap_-10.jpg'
+      },
+      {
+        name: 'Zinger Roll',
+        price: 59,
+        category: 'rolls',
+        custom: 'wrap',
+        description: 'Crispy zinger chicken wrap',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFXqJPuNS1QjAmiGEYWbmi6Z9reUZzHQ2QmjY6xenYwQ&s=10'
+      },
+      {
+        name: 'Beef Roll',
+        price: 79,
+        category: 'rolls',
+        custom: 'wrap',
+        description: 'Delicious wrap filled with beef',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5WT2Bk79IdplDW1REeDX1FWHIz8aFg5Cuome3noNyhw&s=10'
+      },
+      {
+        name: 'Chicken Tikka Roll',
+        price: 70,
+        category: 'rolls',
+        custom: 'wrap',
+        description: 'Filled with chicken tikka',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKMypt9V4gyZP0TWmNJdvhIc7x86yrVmVsvvIkyKAKzA&s=10'
+      },
+      {
+        name: 'Chicken Doner Roll',
+        price: 75,
+        category: 'rolls',
+        custom: 'wrap',
+        description: 'Seasoned chicken doner wrap',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAQFtadMd7N038ue44TaMvGv99I91-TR_9IQkvGr8Dxg&s=10'
+      },
+      {
+        name: 'Mixed Doner Roll',
+        price: 89,
+        category: 'rolls',
+        custom: 'wrap',
+        description: 'Chicken and beef doner',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuawlIzpyyOQH1W0vUQIvLqBUuBYbQrYPrAaKaMGF4dQ&s=10'
+      },
+      {
+        name: 'Halloumi Cheese Roll',
+        price: 60,
+        category: 'rolls',
+        custom: 'wrap',
+        description: 'Grilled halloumi wrap',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGtFl17IBDqjGqU0pdlTkZ_Xvy6-X8m8IbLBGTcvtIC0JgpicfN9BrQwWQ&s=10'
+      },
+
+      // Original burgers and original image URLs
+      {
+        name: 'Zinger Burger',
+        price: 85,
+        category: 'burgers',
+        custom: 'burger',
+        description: 'Classic crunchy zinger burger',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsqP1aCvl6Lp684f45wjHXuOv__7Q68A5qUwaHgAp-HQ&s=10'
+      },
+      {
+        name: 'Volcano Beef Burger',
+        price: 135,
+        category: 'burgers',
+        custom: 'burger',
+        description: 'Spicy volcano beef burger',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSPYII-NnKSj4EKe9Gjo24hI_VCe-IDW-pm4QCiUIBdQ&s=10'
+      },
+
+      // Original pizzas and original image URLs
+      {
+        name: 'Chicken Tikka Pizza (12")',
+        price: 150,
+        category: 'pizzas',
+        custom: 'pizza',
+        description: 'Tandoori chicken tikka pizza',
+        image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=150&q=80'
+      },
+      {
+        name: 'Cheese Stuffed Pepperoni Pizza (12")',
+        price: 179,
+        category: 'pizzas',
+        custom: 'pizza',
+        description: 'Stuffed-crust pepperoni pizza',
+        image: 'https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=150&q=80'
+      },
+
+      // Original grill and pasta items and original image URLs
+      {
+        name: 'BBQ Chicken Grill Platter',
+        price: 128,
+        category: 'grill',
+        custom: 'grill',
+        description: 'Assorted charcoal-grilled chicken skewers',
+        image: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=150&q=80'
+      },
+      {
+        name: 'Creamy Chicken Pasta',
+        price: 98,
+        category: 'grill',
+        custom: 'pasta',
+        description: 'Rich white sauce pasta with grilled chicken',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkEug0djuPnjJcPxkd8XnZZ1HIfuHP2tM8OmeLHkAjjw&s=10'
+      },
+
+      // Original sides and original image URLs
+      {
+        name: 'French Fries / Chips',
+        price: 32,
+        category: 'sides',
+        description: 'Crispy golden fries',
+        image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=150&q=80'
+      },
+      {
+        name: 'Crispy Samosa (2 pcs)',
+        price: 25,
+        category: 'sides',
+        description: 'Savory fried pastry with spiced filling',
+        image: 'https://images.unsplash.com/photo-1541658016709-82535e94bc69?auto=format&fit=crop&w=150&q=80'
+      },
+
+      // Side orders from menu image 3
+      { name: 'Chicken Gola Kebab (4 pcs)', price: 40, category: 'sides', custom: 'kebab' },
+      { name: 'Chicken Shami Kebab (4 pcs)', price: 35, category: 'sides', custom: 'kebab' },
+      { name: 'Chicken Seekh Kebab (4 pcs)', price: 40, category: 'sides', custom: 'kebab' },
+      { name: 'Chicken Chapli Kebab (4 pcs)', price: 50, category: 'sides', custom: 'kebab' },
+      { name: 'Crispy Wings (6 pcs)', price: 55, category: 'sides' },
+      { name: 'H&S Crispy Wings (6 pcs)', price: 55, category: 'sides' },
+      { name: 'Chicken Strips Nachos', price: 80, category: 'sides' },
+      { name: 'Chicken Strips (6 pcs)', price: 60, category: 'sides' },
+      { name: 'Zinger Fries', price: 70, category: 'sides' },
+      { name: 'Chicken Samosa (3 pcs)', price: 45, category: 'sides' },
+      { name: 'Mozzarella Sticks (5 pcs)', price: 50, category: 'sides' },
+      { name: 'Veg Samosa (3 pcs)', price: 35, category: 'sides' },
+      { name: 'Fresh Mint Sauce Extra', price: 10, category: 'sides' },
+      { name: 'Hot Chili Sauce Extra', price: 10, category: 'sides' },
+      { name: 'Garlic Sauce Extra', price: 10, category: 'sides' },
+
+      // Milkshakes from menu image 2
+      { name: 'Vanilla Biscoff Milkshake', price: 45, category: 'milkshakes' },
+      { name: 'Nutella Milkshake', price: 45, category: 'milkshakes' },
+      { name: 'Brownie Milkshake', price: 45, category: 'milkshakes' },
+      { name: 'Vanilla Milkshake', price: 45, category: 'milkshakes' },
+      { name: 'Strawberry Milkshake', price: 45, category: 'milkshakes' },
+      { name: 'Pistachio Mint Milkshake', price: 45, category: 'milkshakes' },
+
+      // Original milkshake and original image URL
+      {
+        name: 'Special Milkshake',
+        price: 45,
+        category: 'milkshakes',
+        description: 'Rich and creamy blended milkshake',
+        image: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=150&q=80'
+      },
+
+      // Desserts from menu image 2
+      { name: 'Chocolate Brownie', price: 35, category: 'desserts' },
+      { name: 'Classic Tiramisu Ice Cream', price: 35, category: 'desserts' },
+      { name: 'Strawberry Bliss Ice Cream', price: 35, category: 'desserts' },
+      { name: 'Classic Vanilla Ice Cream', price: 35, category: 'desserts' },
+
+      // Drinks from menu image 2
+      { name: 'Pure Water', price: 8, category: 'drinks' },
+      { name: 'Pepsi', price: 10, category: 'drinks' },
+      { name: '7UP', price: 10, category: 'drinks' },
+      { name: 'Pepsi / 7UP', price: 10, category: 'drinks', description: 'Choose Pepsi or 7UP' },
+      { name: 'Hot Masala Tea', price: 20, category: 'drinks' },
+
+      // Drinks retained from original website
+      { name: 'Masala Tea', price: 25, category: 'drinks' },
+      { name: 'Tea (Chai)', price: 15, category: 'drinks' },
+      { name: 'Pepsi Zero Sugar', price: 10, category: 'drinks' }
+    ];
+
+    let cart = [];
+    let selectedCategory = 'all';
+    let currentItem = null;
+
+    function escapeHTML(value) {
+      return String(value).replace(/[&<>"']/g, character => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+      })[character]);
+    }
+
+    function money(amount) {
+      return '$' + Number(amount).toFixed(2);
+    }
+
+    function discountedPrice(price) {
+      return Math.round(Number(price) * (1 - DISCOUNT_RATE) * 100) / 100;
+    }
+
+    function renderMenu() {
+      const container = document.getElementById('menuContainer');
+
+      container.innerHTML = categories.map(category => {
+        const items = menuItems
+          .map((item, index) => ({ ...item, index }))
+          .filter(item => item.category === category.id);
+
+        if (!items.length) return '';
+
+        return `
+          <section class="menu-category space-y-4" data-category="${category.id}">
+            <h2 class="mb-4 border-b-2 border-brand pb-2 text-lg font-bold text-gray-900">
+              <i class="fa-solid ${category.icon} mr-2 text-brand"></i>${escapeHTML(category.title)}
+            </h2>
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              ${items.map(renderMenuItem).join('')}
+            </div>
+          </section>
+        `;
+      }).join('');
+    }
+
+    function renderMenuItem(item) {
+      const image = item.image || COMING_SOON_IMAGE;
+      const description = item.description || 'Freshly prepared at Taka Tak Grill';
+      const salePrice = discountedPrice(item.price);
+
+      return `
+        <article class="menu-item flex flex-col justify-between rounded-xl border border-gray-100 bg-white p-4 shadow-sm"
+                 data-name="${escapeHTML(item.name.toLowerCase())}"
+                 data-description="${escapeHTML(description.toLowerCase())}">
+          <div class="mb-2 flex gap-3">
+            <img
+              src="${escapeHTML(image)}"
+              alt="${escapeHTML(item.name)}"
+              loading="lazy"
+              class="h-16 w-16 flex-shrink-0 rounded-lg border border-gray-100 bg-gray-100 object-cover"
+            >
+            <div>
+              <h3 class="item-name text-sm font-bold text-gray-900">${escapeHTML(item.name)}</h3>
+              <p class="mt-1 text-xs text-gray-500">${escapeHTML(description)}</p>
+            </div>
+          </div>
+
+          <div class="mt-2 flex items-center justify-between border-t border-gray-50 pt-2">
+            <div>
+              <del class="block text-xs text-gray-400">${money(item.price)}</del>
+              <span class="font-extrabold text-brand">${money(salePrice)}</span>
+              <span class="ml-1 text-[10px] font-bold text-green-700">10% OFF</span>
+            </div>
+            <button
+              type="button"
+              data-add-item="${item.index}"
+              class="flex items-center gap-1 rounded-lg bg-gray-900 px-3 py-1.5 text-xs font-semibold text-white transition hover:bg-brand"
+            >
+              <i class="fa-solid fa-plus"></i>
+              <span>${item.custom ? 'Customize & Add' : 'Add to Order'}</span>
+            </button>
+          </div>
+        </article>
+      `;
+    }
+
+    function customizationOptions(item) {
+      if (item.custom === 'pizza') {
+        return {
+          spice: false,
+          exclusions: ['Onion', 'Bell peppers', 'Mushrooms', 'Olives', 'Jalapeños'],
+          extras: [
+            { name: 'Extra cheese', price: 10 },
+            { name: 'Extra chicken', price: 10 },
+            { name: 'Extra pepperoni', price: 10 }
+          ]
+        };
+      }
+
+      if (item.custom === 'wrap') {
+        return {
+          spice: true,
+          exclusions: ['Onion', 'Tomato', 'Lettuce', 'Sauce'],
+          extras: [
+            { name: 'Extra sauce', price: 15 },
+            { name: 'Extra meat', price: null },
+            { name: 'Extra cheese', price: 10 }
+          ]
+        };
+      }
+
+      if (item.custom === 'burger') {
+        return {
+          spice: true,
+          exclusions: ['Onion', 'Tomato', 'Lettuce', 'Sauce', 'Pickles'],
+          extras: [
+            { name: 'Extra sauce', price: 15 },
+            { name: 'Extra meat', price: null },
+            { name: 'Extra cheese', price: 10 }
+          ]
+        };
+      }
+
+      if (item.custom === 'pasta') {
+        return {
+          spice: false,
+          exclusions: ['Mushrooms', 'Bell peppers', 'Cream sauce', 'Cheese'],
+          extras: [
+            { name: 'Extra chicken', price: 10 },
+            { name: 'Extra cheese', price: 10 }
+          ]
+        };
+      }
+
+      if (item.custom === 'spice') {
+        return {
+          spice: true,
+          exclusions: ['Onion', 'Tomato', 'Mint sauce', 'Garlic sauce'],
+          extras: [
+            { name: 'Extra sauce', price: 15 },
+            { name: 'Extra meat', price: null }
+          ]
+        };
+      }
+
+      if (item.custom === 'grill') {
+        return {
+          spice: true,
+          exclusions: ['Onion', 'Tomato', 'Mint sauce', 'Garlic sauce'],
+          extras: [
+            { name: 'Extra sauce', price: 15 },
+            { name: 'Extra meat', price: null }
+          ]
+        };
+      }
+
+      if (item.custom === 'kebab') {
+        return {
+          spice: true,
+          exclusions: ['Onion', 'Tomato', 'Mint sauce', 'Garlic sauce'],
+          extras: [
+            { name: 'Extra sauce', price: 15 },
+            { name: 'Extra meat', price: null }
+          ]
+        };
+      }
+
+      return { spice: false, exclusions: [], extras: [] };
+    }
+
+    function openCustomizer(index) {
+      currentItem = menuItems[index];
+      if (!currentItem) return;
+
+      const options = customizationOptions(currentItem);
+      const modal = document.getElementById('customizerModal');
+
+      document.getElementById('modalItemName').textContent = currentItem.name;
+      document.getElementById('modalItemPrice').innerHTML =
+        `<del class="mr-2 text-gray-400">${money(currentItem.price)}</del>
+         <span class="text-brand">${money(discountedPrice(currentItem.price))}</span>
+         <span class="ml-1 text-xs font-semibold text-green-700">10% off</span>`;
+
+      document.getElementById('spiceGroup').classList.toggle('hidden', !options.spice);
+      document.getElementById('exclusionsSection').classList.toggle('hidden', options.exclusions.length === 0);
+      document.getElementById('extrasSection').classList.toggle('hidden', options.extras.length === 0);
+
+      document.querySelectorAll('input[name="modalSpice"]').forEach(radio => {
+        radio.checked = radio.value === 'Mild';
+      });
+
+      document.getElementById('modalExclusions').innerHTML = options.exclusions.map(option => `
+        <label class="flex items-center">
+          <input type="checkbox" class="modal-exclusion mr-1.5" value="${escapeHTML(option)}">
+          No ${escapeHTML(option)}
+        </label>
+      `).join('');
+
+      document.getElementById('modalExtras').innerHTML = options.extras.map(option => {
+        const priceText = option.price === null
+          ? '(price to confirm)'
+          : `(+${money(option.price)})`;
+
+        return `
+          <label class="flex items-center">
+            <input
+              type="checkbox"
+              class="modal-extra mr-1.5"
+              value="${escapeHTML(option.name)}"
+              data-price="${option.price === null ? '' : option.price}"
+            >
+            ${escapeHTML(option.name)} ${priceText}
+          </label>
+        `;
+      }).join('');
+
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeCustomizer() {
+      const modal = document.getElementById('customizerModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      currentItem = null;
+    }
+
+    function addToCart(item, customization = {}, extras = []) {
+      const details = [];
+
+      if (customization.spice) {
+        details.push(`Spice: ${customization.spice}`);
+      }
+
+      if (customization.exclusions?.length) {
+        details.push(`No ${customization.exclusions.join(', ')}`);
+      }
+
+      const pricedExtras = extras.filter(extra => extra.price !== null);
+      const unpricedExtras = extras.filter(extra => extra.price === null);
+
+      if (extras.length) {
+        details.push(`Extra: ${extras.map(extra => extra.name).join(', ')}`);
+      }
+
+      const itemName = details.length
+        ? `${item.name} (${details.join(' | ')})`
+        : item.name;
+
+      // Extras with confirmed prices are included in the item price.
+      // Extra meat has no price yet, so it is noted for confirmation without charging.
+      const originalUnitPrice =
+        item.price + pricedExtras.reduce((sum, extra) => sum + extra.price, 0);
+
+      const saleUnitPrice = discountedPrice(originalUnitPrice);
+      const cartKey = `${item.name}|${details.join('|')}|${originalUnitPrice}`;
+
+      const existing = cart.find(cartItem => cartItem.key === cartKey);
+
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({
+          key: cartKey,
+          name: itemName,
+          originalUnitPrice,
+          saleUnitPrice,
+          unpricedExtras: unpricedExtras.map(extra => extra.name),
+          qty: 1
+        });
+      }
+
+      updateCart();
+    }
+
+    function changeQuantity(index, change) {
+      if (!cart[index]) return;
+
+      cart[index].qty += change;
+
+      if (cart[index].qty <= 0) {
+        cart.splice(index, 1);
+      }
+
+      updateCart();
+    }
+
+    function updateCart() {
+      const itemCount = cart.reduce((total, item) => total + item.qty, 0);
+      const originalSubtotal = cart.reduce(
+        (total, item) => total + item.originalUnitPrice * item.qty,
+        0
+      );
+      const discountedSubtotal = cart.reduce(
+        (total, item) => total + item.saleUnitPrice * item.qty,
+        0
+      );
+      const discount = originalSubtotal - discountedSubtotal;
+      const cutlery = document.getElementById('cutleryPreference').value;
+      const cutleryFee = cutlery === 'Need cutlery' ? 1 : 0;
+
+      document.getElementById('cartCountBadge').textContent = itemCount;
+      document.getElementById('cartOriginalSubtotal').textContent = money(originalSubtotal);
+      document.getElementById('cartDiscount').textContent = '−' + money(discount);
+      document.getElementById('cartSubtotal').textContent = money(discountedSubtotal);
+      document.getElementById('cartTotal').textContent = money(discountedSubtotal + cutleryFee);
+
+      const cartItems = document.getElementById('cartItems');
+
+      if (!cart.length) {
+        cartItems.innerHTML =
+          '<p class="py-6 text-center text-xs italic text-gray-400">Your cart is empty. Select items to order!</p>';
+        return;
+      }
+
+      cartItems.innerHTML = cart.map((item, index) => {
+        const extraNote = item.unpricedExtras.length
+          ? `<p class="mt-1 text-amber-700">Price to confirm: ${escapeHTML(item.unpricedExtras.join(', '))}</p>`
+          : '';
+
+        return `
+          <div class="flex items-center justify-between rounded-lg border border-gray-100 bg-gray-50 p-2.5 text-xs">
+            <div class="min-w-0 flex-1 pr-2">
+              <p class="break-words font-bold text-gray-900">${escapeHTML(item.name)}</p>
+              <p class="mt-1 text-gray-500">
+                <del>${money(item.originalUnitPrice)}</del>
+                <span class="font-semibold text-green-700">${money(item.saleUnitPrice)} each</span>
+                × ${item.qty} = <b>${money(item.saleUnitPrice * item.qty)}</b>
+              </p>
+              ${extraNote}
+            </div>
+            <div class="flex items-center gap-1.5">
+              <button
+                type="button"
+                data-cart-index="${index}"
+                data-change="-1"
+                aria-label="Remove one"
+                class="h-6 w-6 rounded bg-gray-200 font-bold"
+              >−</button>
+              <span class="w-4 text-center font-bold">${item.qty}</span>
+              <button
+                type="button"
+                data-cart-index="${index}"
+                data-change="1"
+                aria-label="Add one"
+                class="h-6 w-6 rounded bg-gray-200 font-bold"
+              >+</button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function applyFilters() {
+      const query = document.getElementById('searchInput').value.trim().toLowerCase();
+      let visibleItems = 0;
+
+      document.querySelectorAll('.menu-category').forEach(section => {
+        const categoryMatches =
+          selectedCategory === 'all' || section.dataset.category === selectedCategory;
+        let sectionHasMatches = false;
+
+        section.querySelectorAll('.menu-item').forEach(item => {
+          const content = `${item.dataset.name} ${item.dataset.description}`;
+          const shouldShow = categoryMatches && content.includes(query);
+
+          item.classList.toggle('hidden', !shouldShow);
+
+          if (shouldShow) {
+            sectionHasMatches = true;
+            visibleItems += 1;
+          }
+        });
+
+        section.classList.toggle('hidden', !sectionHasMatches);
+      });
+
+      document.getElementById('noResults').classList.toggle('hidden', visibleItems > 0);
+    }
+
+    function checkoutWhatsApp() {
+      if (!cart.length) {
+        alert('Please add items to your cart before ordering.');
+        return;
+      }
+
+      const customerName = document.getElementById('customerName').value.trim();
+      const notes = document.getElementById('customerNotes').value.trim();
+      const cutlery = document.getElementById('cutleryPreference').value;
+
+      const originalSubtotal = cart.reduce(
+        (total, item) => total + item.originalUnitPrice * item.qty,
+        0
+      );
+      const discountedSubtotal = cart.reduce(
+        (total, item) => total + item.saleUnitPrice * item.qty,
+        0
+      );
+      const discount = originalSubtotal - discountedSubtotal;
+      const cutleryFee = cutlery === 'Need cutlery' ? 1 : 0;
+      const total = discountedSubtotal + cutleryFee;
+
+      let message = 'Hello Taka Tak Grill! I would like to place a pickup order:\\n\\n';
+
+      if (customerName) message += `Customer: ${customerName}\\n`;
+      if (notes) message += `Pickup time / notes: ${notes}\\n`;
+
+      message += `Cutlery: ${cutlery}\\n------------------\\n`;
+
+      cart.forEach(item => {
+        message += `• ${item.name} × ${item.qty} — ${money(item.saleUnitPrice * item.qty)}\\n`;
+
+        if (item.unpricedExtras.length) {
+          message += `  Please confirm price for: ${item.unpricedExtras.join(', ')}\\n`;
         }
+      });
 
-        function closeCustomizer() {
-            document.getElementById('customizerModal').classList.add('hidden');
-        }
+      message +=
+        `------------------\\n` +
+        `Original subtotal: ${money(originalSubtotal)}\\n` +
+        `10% discount: -${money(discount)}\\n` +
+        `Discounted subtotal: ${money(discountedSubtotal)}\\n` +
+        `Cutlery: ${money(cutleryFee)}\\n` +
+        `Total (before unpriced extras): ${money(total)}\\n\\n` +
+        `Please confirm my pickup order!`;
 
-        function confirmCustomizedAdd() {
-            const spice = document.querySelector('input[name="modalSpice"]:checked').value;
-            const exclusions = Array.from(document.querySelectorAll('.modalExc:checked')).map(el => el.value);
-            const extras = Array.from(document.querySelectorAll('.modalExt:checked')).map(el => el.value);
+      const url = `https://wa.me/85254407867?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }
 
-            let details = [`Spice: ${spice}`];
-            if (exclusions.length > 0) details.push(`No: ${exclusions.join(', ')}`);
-            if (extras.length > 0) details.push(`Extra: ${extras.join(', ')}`);
+    document.getElementById('menuContainer').addEventListener('click', event => {
+      const button = event.target.closest('[data-add-item]');
+      if (!button) return;
 
-            const finalName = `currentItem.name({details.join(' | ')})`;
-            const finalPrice = currentItem.price + (extras.length * 10);
+      const index = Number(button.dataset.addItem);
+      const item = menuItems[index];
+      if (!item) return;
 
-            const existing = cart.find(item => item.name === finalName);
-            if (existing) {
-                existing.qty += 1;
-            } else {
-                cart.push({ name: finalName, price: finalPrice, qty: 1 });
-            }
+      if (item.custom) {
+        openCustomizer(index);
+      } else {
+        addToCart(item);
+      }
+    });
 
-            closeCustomizer();
-            updateCartUI();
-        }
+    document.getElementById('cartItems').addEventListener('click', event => {
+      const button = event.target.closest('[data-cart-index]');
+      if (!button) return;
 
-        function addSimpleItem(name, price) {
-            const existing = cart.find(item => item.name === name);
-            if (existing) {
-                existing.qty += 1;
-            } else {
-                cart.push({ name, price, qty: 1 });
-            }
-            updateCartUI();
-        }
+      changeQuantity(
+        Number(button.dataset.cartIndex),
+        Number(button.dataset.change)
+      );
+    });
 
-        function updateQuantity(name, change) {
-            const item = cart.find(item => item.name === name);
-            if (item) {
-                item.qty += change;
-                if (item.qty <= 0) cart = cart.filter(i => i.name !== name);
-            }
-            updateCartUI();
-        }
+    document.getElementById('categoryButtons').addEventListener('click', event => {
+      const button = event.target.closest('[data-category]');
+      if (!button) return;
 
-        function updateCartUI() {
-            const cartItemsEl = document.getElementById('cartItems');
-            const badge = document.getElementById('cartCountBadge');
-            const subtotalEl = document.getElementById('cartSubtotal');
-            const totalEl = document.getElementById('cartTotal');
-            const cutlery = document.getElementById('cutleryPreference').value;
+      selectedCategory = button.dataset.category;
 
-            badge.innerText = cart.reduce((sum, item) => sum + item.qty, 0);
+      document.querySelectorAll('.cat-btn').forEach(categoryButton => {
+        categoryButton.classList.remove('bg-brand', 'text-white');
+        categoryButton.classList.add('bg-gray-100', 'text-gray-600');
+      });
 
-            if (cart.length === 0) {
-                cartItemsEl.innerHTML = '<p class="text-gray-400 text-xs text-center py-6 italic">Your cart is empty. Select items to order!</p>';
-                subtotalEl.innerText = '$0';
-                totalEl.innerText = '$0';
-                return;
-            }
+      button.classList.remove('bg-gray-100', 'text-gray-600');
+      button.classList.add('bg-brand', 'text-white');
 
-            let html = '';
-            let subtotal = 0;
+      applyFilters();
+    });
 
-            cart.forEach(item => {
-                let itemTotal = item.price * item.qty;
-                subtotal += itemTotal;
-                html += `
-                    <div class="flex items-center justify-between bg-gray-50 p-2.5 rounded-lg border border-gray-100 text-xs">
-                        <div class="flex-1 pr-2">
-                            <p class="font-bold text-gray-900">${item.name}</p>
-                            <p class="text-gray-500">
-item.pricex$item.qty=<b>
-{itemTotal}</b></p>
-                        </div>
-                        <div class="flex items-center space-x-1.5">
-                            <button onclick="updateQuantity('${item.name.replace(/'/g, "\\'")}', -1)" class="w-6 h-6 bg-gray-200 rounded font-bold">-</button>
-                            <span class="font-bold w-4 text-center">${item.qty}</span>
-                            <button onclick="updateQuantity('${item.name.replace(/'/g, "\\'")}', 1)" class="w-6 h-6 bg-gray-200 rounded font-bold">+</button>
-                        </div>
-                    </div>
-                `;
-            });
+    document.getElementById('searchInput').addEventListener('input', applyFilters);
+    document.getElementById('cutleryPreference').addEventListener('change', updateCart);
+    document.getElementById('checkoutButton').addEventListener('click', checkoutWhatsApp);
+    document.getElementById('closeModalButton').addEventListener('click', closeCustomizer);
+    document.getElementById('cancelModalButton').addEventListener('click', closeCustomizer);
 
-            let cutleryFee = (cutlery === 'Need cutlery') ? 1 : 0;
-            subtotalEl.innerText = '$' + subtotal;
-            totalEl.innerText = '$' + (subtotal + cutleryFee);
-            cartItemsEl.innerHTML = html;
-        }
+    document.getElementById('confirmAddButton').addEventListener('click', () => {
+      if (!currentItem) return;
 
-        document.getElementById('cutleryPreference').addEventListener('change', updateCartUI);
+      const options = customizationOptions(currentItem);
+      const spice = options.spice
+        ? document.querySelector('input[name="modalSpice"]:checked')?.value || 'Mild'
+        : null;
 
-        function filterCategory(cat) {
-            document.querySelectorAll('.cat-btn').forEach(btn => {
-                btn.classList.remove('active', 'bg-brand', 'text-white');
-                btn.classList.add('bg-gray-100', 'text-gray-600');
-            });
-            event.target.classList.remove('bg-gray-100', 'text-gray-600');
-            event.target.classList.add('active', 'bg-brand', 'text-white');
+      const exclusions = [...document.querySelectorAll('.modal-exclusion:checked')]
+        .map(input => input.value);
 
-            document.querySelectorAll('.menu-category').forEach(sec => {
-                if (cat === 'all' || sec.getAttribute('data-cat') === cat) {
-                    sec.style.display = 'block';
-                } else {
-                    sec.style.display = 'none';
-                }
-            });
-        }
+      const extras = [...document.querySelectorAll('.modal-extra:checked')]
+        .map(input => ({
+          name: input.value,
+          price: input.dataset.price === '' ? null : Number(input.dataset.price)
+        }));
 
-        function filterMenu() {
-            const query = document.getElementById('searchInput').value.toLowerCase();
-            document.querySelectorAll('.menu-item').forEach(item => {
-                const name = item.querySelector('.item-name').innerText.toLowerCase();
-                item.style.display = name.includes(query) ? 'flex' : 'none';
-            });
-        }
+      addToCart(currentItem, { spice, exclusions }, extras);
+      closeCustomizer();
+    });
 
-        function checkoutWhatsApp() {
-            if (cart.length === 0) {
-                alert('Please add items to your cart before ordering.');
-                return;
-            }
+    document.getElementById('customizerModal').addEventListener('click', event => {
+      if (event.target.id === 'customizerModal') closeCustomizer();
+    });
 
-            const name = document.getElementById('customerName').value.trim();
-            const notes = document.getElementById('customerNotes').value.trim();
-            const cutlery = document.getElementById('cutleryPreference').value;
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') closeCustomizer();
+    });
 
-            let message = `Hello Taka Tak Grill! I would like to place a pickup order:\n\n`;
-            if (name) message += `*Customer:* ${name}\n`;
-            if (notes) message += `*Notes:* ${notes}\n`;
-            message += `*Cutlery:* ${cutlery}\n------------------\n`;
-
-            let subtotal = 0;
-            cart.forEach(item => {
-                message += `• ${item.name} x item.qty(${item.price * item.qty})\n`;
-                subtotal += item.price * item.qty;
-            });
-
-            let fee = (cutlery === 'Need cutlery') ? 1 : 0;
-            message += `------------------\n*Total Amount:* $${subtotal + fee}\nPlease confirm my pickup order!`;
-
-            window.open(`https://wa.me/85254407867?text=${encodeURIComponent(message)}`, '_blank');
-        }
-    </script>
+    renderMenu();
+    updateCart();
+    applyFilters();
+  </script>
 </body>
 </html>
-
-
