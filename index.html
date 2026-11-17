@@ -25,6 +25,8 @@
     };
   </script>
 </head>
+
+<body class="min-h-screen flex flex-col bg-gray-50 font-sans text-gray-800 antialiased">
 <section class="bg-gradient-to-r from-red-900 via-red-700 to-orange-500 text-white">
   <div class="max-w-7xl mx-auto px-6 py-12 text-center">
     <h2 class="text-4xl font-extrabold mb-3">
@@ -44,8 +46,6 @@
     </div>
   </div>
 </section>
-<body class="min-h-screen flex flex-col bg-gray-50 font-sans text-gray-800 antialiased">
-
   <div class="border-b border-gray-800 bg-gray-900 px-4 py-2 text-xs text-gray-300">
     <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 sm:flex-row">
       <div class="flex items-center gap-2 text-center sm:text-left">
@@ -104,7 +104,29 @@
           <div id="categoryButtons" class="flex w-full gap-2 overflow-x-auto text-xs font-semibold sm:w-auto"></div>
         </div>
       </div>
+<section class="mb-8">
+  <h2 class="text-2xl font-bold mb-4">
+    ⭐ Customer Favourites
+  </h2>
 
+  <div class="grid md:grid-cols-4 gap-4">
+    <div class="bg-white p-4 rounded-xl shadow">
+      🔥 Chicken Tikka Pizza
+    </div>
+
+    <div class="bg-white p-4 rounded-xl shadow">
+      🔥 Mixed Doner Roll
+    </div>
+
+    <div class="bg-white p-4 rounded-xl shadow">
+      🔥 Zinger Burger
+    </div>
+
+    <div class="bg-white p-4 rounded-xl shadow">
+      🔥 Lamb with Rice
+    </div>
+  </div>
+</section>
       <div id="menuContainer" class="space-y-8"></div>
 
       <p id="noResults" class="hidden rounded-xl bg-white p-8 text-center text-sm text-gray-500 shadow-sm">
@@ -243,29 +265,7 @@
       { id: 'desserts', title: 'Desserts', icon: 'fa-ice-cream' },
       { id: 'drinks', title: 'Drinks', icon: 'fa-mug-hot' }
     ];
-<section class="mb-8">
-  <h2 class="text-2xl font-bold mb-4">
-    ⭐ Customer Favourites
-  </h2>
 
-  <div class="grid md:grid-cols-4 gap-4">
-    <div class="bg-white p-4 rounded-xl shadow">
-      🔥 Chicken Tikka Pizza
-    </div>
-
-    <div class="bg-white p-4 rounded-xl shadow">
-      🔥 Mixed Doner Roll
-    </div>
-
-    <div class="bg-white p-4 rounded-xl shadow">
-      🔥 Zinger Burger
-    </div>
-
-    <div class="bg-white p-4 rounded-xl shadow">
-      🔥 Lamb with Rice
-    </div>
-  </div>
-</section>
     const menuItems = [
       // Meat Lovers
       { name: 'Lamb with Chips', price: 95, category: 'meals', custom: 'spice', image: 'rlwc.jpeg' },
@@ -913,6 +913,11 @@
     updateCart();
     applyFilters();
   </script>
+<a href="https://wa.me/85254407867"
+   target="_blank"
+   class="fixed bottom-5 right-5 z-50 bg-green-500 hover:bg-green-600 text-white rounded-full px-5 py-4 shadow-xl">
+   💬 Order Now
+</a>
 </body>
 </html>
 
