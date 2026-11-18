@@ -424,7 +424,28 @@
     </p>
   </div>
 </footer>
+<script>
 
+const DISCOUNT_RATE = 0.10;
+
+const COMING_SOON_IMAGE =
+  "https://placehold.co/300x220/f3f4f6/991b1b?text=Image+Coming+Soon";
+
+const categories = [
+  { id: 'meals', title: 'Meat Lovers', icon: 'fa-drumstick-bite' },
+  { id: 'curries', title: 'Curries with Rice', icon: 'fa-bowl-food' },
+  { id: 'salads', title: 'Salads', icon: 'fa-leaf' },
+  { id: 'rolls', title: 'Kebabs / Shawarma', icon: 'fa-bowl-food' },
+  { id: 'burgers', title: 'Burgers & Fried Chicken', icon: 'fa-burger' },
+  { id: 'pizzas', title: 'Pizzas', icon: 'fa-pizza-slice' },
+  { id: 'grill', title: 'Grill, BBQ & Pasta', icon: 'fa-fire' },
+  { id: 'sides', title: 'Side Orders', icon: 'fa-utensils' },
+  { id: 'milkshakes', title: 'Milkshakes', icon: 'fa-mug-hot' },
+  { id: 'desserts', title: 'Desserts', icon: 'fa-ice-cream' },
+  { id: 'drinks', title: 'Drinks', icon: 'fa-mug-hot' }
+];
+
+const menuItems = [
       // Curries with Rice
       { name: 'Chicken Kofta Curry with Rice', price: 65, category: 'curries', custom: 'spice' },
       { name: 'Mix Beef & Chicken Curry with Rice', price: 75, category: 'curries', custom: 'spice' },
