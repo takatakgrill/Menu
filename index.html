@@ -1,37 +1,8 @@
   <!-- Last Updated: 17 Nov 2026 -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Taka Tak Grill | Menu & Ordering</title>
-
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              DEFAULT: '#b91c1c',
-              dark: '#991b1b',
-              light: '#ef4444',
-              accent: '#f59e0b'
-            }
-          }
-        }
-      }
-    };
-  </script>
-</head>
-
 <body class="min-h-screen flex flex-col bg-gray-50 font-sans text-gray-800 antialiased">
-<section class="bg-gradient-to-r from-red-900 via-red-700 to-orange-500 text-white">
-  <div class="max-w-7xl mx-auto px-4 py-4 md:py-10 text-center">
 
-    <section class="bg-gradient-to-r from-red-900 via-red-700 to-orange-500 text-white">
+<!-- Hero Banner -->
+<section class="bg-gradient-to-r from-red-900 via-red-700 to-orange-500 text-white">
   <div class="max-w-7xl mx-auto px-4 py-3 md:py-8 text-center">
 
     <h1 class="text-xl md:text-4xl font-extrabold">
@@ -85,6 +56,7 @@
     </a>
 
     <div class="flex items-center gap-2 rounded-lg border border-white/10 bg-black/30 px-3 py-2 text-xs">
+
       <span class="text-gray-300">Find us on:</span>
 
       <a href="https://instagram.com/takatakgrill786"
@@ -104,154 +76,323 @@
          class="rounded bg-pink-600 px-2 py-1 text-[10px] font-bold text-white">
          Foodpanda
       </a>
+
     </div>
 
   </div>
 </div>
 
-    <aside class="lg:col-span-1" aria-label="Your order">
-      <div class="rounded-2xl border border-gray-100 bg-white p-5 shadow-lg lg:sticky lg:top-28">
-        <h2 class="mb-4 flex items-center justify-between border-b border-gray-100 pb-3 text-lg font-bold text-gray-900">
-          <span><i class="fa-solid fa-basket-shopping mr-2 text-brand"></i>Your Order</span>
-          <span id="cartCountBadge" class="rounded-full bg-brand px-2 py-0.5 text-xs font-bold text-white">0</span>
+<main class="mx-auto grid w-full max-w-7xl flex-grow grid-cols-1 gap-8 px-4 py-6 sm:px-6 lg:grid-cols-3 lg:px-8">
+
+  <section class="space-y-6 lg:col-span-2" aria-label="Restaurant menu">
+
+    <!-- Instagram Promo Card -->
+    <div class="relative overflow-hidden rounded-2xl bg-gradient-to-r from-pink-600 via-red-500 to-orange-500 p-4 md:p-6 shadow-xl">
+
+      <div class="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-white/10"></div>
+      <div class="absolute -bottom-10 -left-10 h-40 w-40 rounded-full bg-white/10"></div>
+
+      <div class="relative z-10 text-center text-white">
+
+        <div class="inline-block rounded-full bg-white/20 px-4 py-1 text-xs font-bold uppercase tracking-wider">
+          🔥 Daily Specials
+        </div>
+
+        <h2 class="mt-3 text-lg md:text-2xl font-extrabold">
+          Follow Us for Daily Deals & Giveaways
         </h2>
 
-        <div id="cartItems" class="mb-4 max-h-72 space-y-3 overflow-y-auto pr-1">
-          <p class="py-6 text-center text-xs italic text-gray-400">Your cart is empty. Select items to order!</p>
-        </div>
+        <p class="mt-3 text-sm text-white/90">
+          Exclusive discounts, flash deals, giveaways and new menu launches are announced on Instagram.
+        </p>
 
-        <div class="mb-3 border-t border-gray-100 pt-3">
-          <label for="cutleryPreference" class="mb-1.5 block text-xs font-semibold text-gray-700">
-            <i class="fa-solid fa-utensils mr-1"></i>Cutlery request
-          </label>
-          <select id="cutleryPreference" class="w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-brand">
-            <option value="No cutlery required">No cutlery required ($0)</option>
-            <option value="Need cutlery">Need cutlery (+$1)</option>
-          </select>
-        </div>
+        <a href="https://instagram.com/takatakgrill786"
+           target="_blank"
+           class="mt-5 inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 font-bold text-pink-600 shadow-lg">
+          📸 Follow @takatakgrill786
+        </a>
 
-        <div class="mb-4 space-y-2 border-t border-gray-100 pt-3">
-          <div class="flex justify-between text-sm text-gray-600">
-            <span>Original subtotal</span>
-            <span id="cartOriginalSubtotal">$0</span>
-          </div>
-          <div class="flex justify-between text-sm font-semibold text-green-700">
-            <span>10% discount</span>
-            <span id="cartDiscount">−$0</span>
-          </div>
-          <div class="flex justify-between text-sm text-gray-600">
-            <span>Discounted subtotal</span>
-            <span id="cartSubtotal">$0</span>
-          </div>
-          <div class="flex justify-between text-base font-extrabold text-gray-900">
-            <span>Total</span>
-            <span id="cartTotal" class="text-brand">$0</span>
-          </div>
-        </div>
+        <p class="mt-2 text-xs text-white/80">
+          New items • Flash deals • Giveaways
+        </p>
 
-        <div class="mb-4 space-y-3">
-          <div>
-            <label for="customerName" class="mb-1 block text-xs font-semibold text-gray-700">Your name</label>
-            <input id="customerName" type="text" autocomplete="name" placeholder="Enter your name" class="w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-brand">
-          </div>
-          <div>
-            <label for="customerNotes" class="mb-1 block text-xs font-semibold text-gray-700">Pickup time / notes</label>
-            <input id="customerNotes" type="text" placeholder="e.g., Pickup in 20 mins" class="w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-brand">
-          </div>
-        </div>
-
-        <button id="checkoutButton" type="button" class="flex w-full items-center justify-center gap-2 rounded-xl bg-green-600 px-4 py-3 text-sm font-bold text-white shadow-md transition hover:bg-green-700">
-          <i class="fa-brands fa-whatsapp text-lg"></i>
-          Order via WhatsApp
-        </button>
-      </div>
-    </aside>
-  </main>
-
-  <div id="customizerModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 p-4" role="dialog" aria-modal="true" aria-labelledby="modalItemName">
-    <div class="relative max-h-[90vh] w-full max-w-md overflow-y-auto rounded-2xl bg-white p-6 shadow-2xl">
-      <button id="closeModalButton" type="button" aria-label="Close customization" class="absolute right-4 top-4 text-lg text-gray-400 hover:text-gray-700">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-
-      <h2 id="modalItemName" class="mb-1 pr-8 text-lg font-extrabold text-gray-900">Customize item</h2>
-      <p id="modalItemPrice" class="mb-4 text-sm font-bold text-brand"></p>
-
-      <div id="spiceGroup" class="mb-4 text-xs">
-        <span class="mb-2 block font-bold uppercase text-gray-800">Choose spice level</span>
-        <div class="flex flex-wrap gap-4">
-          <label class="flex items-center"><input type="radio" name="modalSpice" value="Mild" class="mr-1.5">Mild</label>
-          <label class="flex items-center"><input type="radio" name="modalSpice" value="Medium" class="mr-1.5">Medium</label>
-          <label class="flex items-center"><input type="radio" name="modalSpice" value="Spicy" class="mr-1.5">Spicy</label>
-        </div>
-      </div>
-
-      <div id="exclusionsSection" class="mb-4 text-xs">
-        <span class="mb-2 block font-bold uppercase text-gray-800">Exclusions — choose what to leave out</span>
-        <div id="modalExclusions" class="grid grid-cols-2 gap-2"></div>
-      </div>
-
-      <div id="extrasSection" class="mb-4 text-xs">
-        <span class="mb-2 block font-bold uppercase text-gray-800">Extras</span>
-        <div id="modalExtras" class="grid grid-cols-1 gap-2"></div>
-      </div>
-
-      <div class="mt-6 flex gap-3 border-t border-gray-100 pt-4">
-        <button id="cancelModalButton" type="button" class="w-1/2 rounded-xl bg-gray-100 py-2.5 font-bold text-gray-700 transition hover:bg-gray-200">Cancel</button>
-        <button id="confirmAddButton" type="button" class="w-1/2 rounded-xl bg-brand py-2.5 font-bold text-white shadow transition hover:bg-brand-dark">Add to order</button>
       </div>
     </div>
+
+    <!-- Search & Categories -->
+<div class="rounded-xl border border-gray-100 bg-white p-4 shadow-sm">
+  <div class="flex flex-col items-center justify-between gap-3 sm:flex-row">
+
+    <label class="relative w-full sm:w-64">
+      <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </span>
+
+      <input
+        id="searchInput"
+        type="search"
+        placeholder="Search menu items..."
+        class="w-full rounded-lg border border-gray-200 bg-gray-50 py-2 pl-10 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-brand">
+    </label>
+
+    <div id="categoryButtons"
+         class="flex w-full gap-2 overflow-x-auto text-xs font-semibold sm:w-auto">
+    </div>
+
+  </div>
+</div>
+
+<!-- Menu Container -->
+<div id="menuContainer" class="space-y-8"></div>
+
+<p id="noResults"
+   class="hidden rounded-xl bg-white p-8 text-center text-sm text-gray-500 shadow-sm">
+  No menu items match your search.
+</p>
+
+</section>
+
+<!-- Cart / Order Sidebar -->
+<aside class="lg:col-span-1" aria-label="Your order">
+
+  <div class="rounded-2xl border border-gray-100 bg-white p-5 shadow-lg lg:sticky lg:top-28">
+
+    <h2 class="mb-4 flex items-center justify-between border-b border-gray-100 pb-3 text-lg font-bold text-gray-900">
+      <span>
+        <i class="fa-solid fa-basket-shopping mr-2 text-brand"></i>
+        Your Order
+      </span>
+
+      <span id="cartCountBadge"
+            class="rounded-full bg-brand px-2 py-0.5 text-xs font-bold text-white">
+        0
+      </span>
+    </h2>
+
+    <div id="cartItems"
+         class="mb-4 max-h-72 space-y-3 overflow-y-auto pr-1">
+      <p class="py-6 text-center text-xs italic text-gray-400">
+        Your cart is empty. Select items to order!
+      </p>
+    </div>
+
+    <div class="mb-3 border-t border-gray-100 pt-3">
+      <label for="cutleryPreference"
+             class="mb-1.5 block text-xs font-semibold text-gray-700">
+        <i class="fa-solid fa-utensils mr-1"></i>
+        Cutlery request
+      </label>
+
+      <select id="cutleryPreference"
+              class="w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-brand">
+        <option value="No cutlery required">
+          No cutlery required ($0)
+        </option>
+
+        <option value="Need cutlery">
+          Need cutlery (+$1)
+        </option>
+      </select>
+    </div>
+
+    <div class="mb-4 space-y-2 border-t border-gray-100 pt-3">
+
+      <div class="flex justify-between text-sm text-gray-600">
+        <span>Original subtotal</span>
+        <span id="cartOriginalSubtotal">$0</span>
+      </div>
+
+      <div class="flex justify-between text-sm font-semibold text-green-700">
+        <span>10% discount</span>
+        <span id="cartDiscount">−$0</span>
+      </div>
+
+      <div class="flex justify-between text-sm text-gray-600">
+        <span>Discounted subtotal</span>
+        <span id="cartSubtotal">$0</span>
+      </div>
+
+      <div class="flex justify-between text-base font-extrabold text-gray-900">
+        <span>Total</span>
+        <span id="cartTotal" class="text-brand">$0</span>
+      </div>
+
+    </div>
+
+    <div class="mb-4 space-y-3">
+
+      <div>
+        <label for="customerName"
+               class="mb-1 block text-xs font-semibold text-gray-700">
+          Your name
+        </label>
+
+        <input id="customerName"
+               type="text"
+               autocomplete="name"
+               placeholder="Enter your name"
+               class="w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-brand">
+      </div>
+
+      <div>
+        <label for="customerNotes"
+               class="mb-1 block text-xs font-semibold text-gray-700">
+          Pickup time / notes
+        </label>
+
+        <input id="customerNotes"
+               type="text"
+               placeholder="e.g., Pickup in 20 mins"
+               class="w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-brand">
+      </div>
+
+    </div>
+
+    <button id="checkoutButton"
+            type="button"
+            class="flex w-full items-center justify-center gap-2 rounded-xl bg-green-600 px-4 py-3 text-sm font-bold text-white shadow-md transition hover:bg-green-700">
+      <i class="fa-brands fa-whatsapp text-lg"></i>
+      Order via WhatsApp
+    </button>
+
   </div>
 
-  <footer class="mt-12 border-t border-gray-800 bg-gray-900 py-6 text-white">
-    <div class="mx-auto max-w-7xl space-y-2 px-4 text-center">
-      <h2 class="text-base font-bold uppercase tracking-wider text-brand-light">Taka Tak Grill</h2>
-      <p class="text-xs text-gray-400">WORKSHOP 11 7/F BLOCK B VERISTRONG INDUSTRIAL CENTRE NO. 34-36 AU PUI WAN ST NT</p>
-      <p class="text-xs text-gray-400">For orders call +852 5161 2730 / +852 5440 7867</p>
-      <p class="text-[10px] text-gray-500">&copy; 2026 Taka Tak Grill. All rights reserved.</p>
+</aside>
+
+</main>
+
+<!-- Item Customization Modal -->
+<div id="customizerModal"
+     class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 p-4"
+     role="dialog"
+     aria-modal="true"
+     aria-labelledby="modalItemName">
+
+  <div class="relative w-full max-w-md max-h-[90vh] overflow-y-auto rounded-2xl bg-white p-6 shadow-2xl">
+
+    <button id="closeModalButton"
+            type="button"
+            aria-label="Close customization"
+            class="absolute top-4 right-4 text-lg text-gray-400 hover:text-gray-700">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+    <h2 id="modalItemName"
+        class="mb-1 pr-8 text-lg font-extrabold text-gray-900">
+      Customize Item
+    </h2>
+
+    <p id="modalItemPrice"
+       class="mb-4 text-sm font-bold text-brand">
+    </p>
+
+    <!-- Spice Level -->
+    <div id="spiceGroup" class="mb-4 text-xs">
+
+      <span class="mb-2 block font-bold uppercase text-gray-800">
+        Choose Spice Level
+      </span>
+
+      <div class="flex flex-wrap gap-4">
+
+        <label class="flex items-center">
+          <input type="radio"
+                 name="modalSpice"
+                 value="Mild"
+                 class="mr-1.5">
+          Mild
+        </label>
+
+        <label class="flex items-center">
+          <input type="radio"
+                 name="modalSpice"
+                 value="Medium"
+                 class="mr-1.5">
+          Medium
+        </label>
+
+        <label class="flex items-center">
+          <input type="radio"
+                 name="modalSpice"
+                 value="Spicy"
+                 class="mr-1.5">
+          Spicy
+        </label>
+
+      </div>
+
     </div>
-  </footer>
 
-  <script>
-    const DISCOUNT_RATE = 0.10;
+    <!-- Exclusions -->
+    <div id="exclusionsSection" class="mb-4 text-xs">
 
-    const COMING_SOON_IMAGE =
-      'data:image/svg+xml;charset=UTF-8,' +
-      encodeURIComponent(`
-        <svg xmlns="http://www.w3.org/2000/svg" width="300" height="220" viewBox="0 0 300 220">
-          <rect width="300" height="220" fill="#f3f4f6"/>
-          <rect x="12" y="12" width="276" height="196" rx="18" fill="#fff" stroke="#d1d5db" stroke-width="3"/>
-          <text x="150" y="100" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#991b1b">Image</text>
-          <text x="150" y="135" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#991b1b">coming soon</text>
-        </svg>
-      `);
+      <span class="mb-2 block font-bold uppercase text-gray-800">
+        Exclusions
+      </span>
 
-    const categories = [
-      { id: 'meals', title: 'Meat Lovers', icon: 'fa-drumstick-bite' },
-      { id: 'curries', title: 'Curries with Rice', icon: 'fa-bowl-food' },
-      { id: 'salads', title: 'Salads', icon: 'fa-leaf' },
-      { id: 'rolls', title: 'Kebabs / Shawarma', icon: 'fa-bowl-food' },
-      { id: 'burgers', title: 'Burgers & Fried Chicken', icon: 'fa-burger' },
-      { id: 'pizzas', title: 'Pizzas', icon: 'fa-pizza-slice' },
-      { id: 'grill', title: 'Grill, BBQ & Pasta', icon: 'fa-fire' },
-      { id: 'sides', title: 'Side Orders', icon: 'fa-utensils' },
-      { id: 'milkshakes', title: 'Milkshakes', icon: 'fa-mug-hot' },
-      { id: 'desserts', title: 'Desserts', icon: 'fa-ice-cream' },
-      { id: 'drinks', title: 'Drinks', icon: 'fa-mug-hot' }
-    ];
+      <div id="modalExclusions"
+           class="grid grid-cols-2 gap-2">
+      </div>
 
-    const menuItems = [
-      // Meat Lovers
-      { name: 'Lamb with Chips', price: 95, category: 'meals', custom: 'spice', image: 'rlwc.jpeg' },
-      { name: 'Lamb with Rice', price: 85, category: 'meals', custom: 'spice', image: 'rlwr.jpeg' },
-      { name: 'Beef with Rice', price: 70, category: 'meals', custom: 'spice' },
-      { name: 'Beef with Chips', price: 80, category: 'meals', custom: 'spice' },
-      { name: 'Chicken Tikka with Rice', price: 70, category: 'meals', custom: 'spice' },
-      { name: 'Chicken Tikka with Chips', price: 80, category: 'meals', custom: 'spice' },
-      { name: 'Roast Chicken with Rice', price: 70, category: 'meals', custom: 'spice', image: 'rcwr.jpeg' },
-      { name: 'Roast Chicken with Chips', price: 80, category: 'meals', custom: 'spice', image: 'rcwc.jpeg' },
-      { name: 'Mix Beef & Chicken with Rice', price: 89, category: 'meals', custom: 'spice' },
-      { name: 'Mix Beef & Chicken with Chips', price: 99, category: 'meals', custom: 'spice' },
+    </div>
+
+    <!-- Extras -->
+    <div id="extrasSection" class="mb-4 text-xs">
+
+      <span class="mb-2 block font-bold uppercase text-gray-800">
+        Extras
+      </span>
+
+      <div id="modalExtras"
+           class="grid grid-cols-1 gap-2">
+      </div>
+
+    </div>
+
+    <!-- Buttons -->
+    <div class="mt-6 flex gap-3 border-t border-gray-100 pt-4">
+
+      <button id="cancelModalButton"
+              type="button"
+              class="w-1/2 rounded-xl bg-gray-100 py-2.5 font-bold text-gray-700 hover:bg-gray-200">
+        Cancel
+      </button>
+
+      <button id="confirmAddButton"
+              type="button"
+              class="w-1/2 rounded-xl bg-brand py-2.5 font-bold text-white hover:bg-brand-dark">
+        Add to Order
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+ <footer class="mt-12 border-t border-gray-800 bg-gray-900 py-6 text-white">
+  <div class="mx-auto max-w-7xl space-y-2 px-4 text-center">
+    <h2 class="text-base font-bold uppercase tracking-wider text-brand-light">
+      Taka Tak Grill
+    </h2>
+
+    <p class="text-xs text-gray-400">
+      WORKSHOP 11 7/F BLOCK B VERISTRONG INDUSTRIAL CENTRE NO. 34-36 AU PUI WAN ST NT
+    </p>
+
+    <p class="text-xs text-gray-400">
+      For orders call +852 5161 2730 / +852 5440 7867
+    </p>
+
+    <p class="text-xs text-gray-400">
+      Instagram: @takatakgrill786
+    </p>
+
+    <p class="text-[10px] text-gray-500">
+      © 2026 Taka Tak Grill. All rights reserved.
+    </p>
+  </div>
+</footer>
 
       // Curries with Rice
       { name: 'Chicken Kofta Curry with Rice', price: 65, category: 'curries', custom: 'spice' },
